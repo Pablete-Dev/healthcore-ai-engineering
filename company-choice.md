@@ -19,3 +19,7 @@ Este departamento me resulta interesante porque debe integrar sistemas clínicos
 El reto que más me gustaría construir es un **sistema predictivo de no-shows integrado con recordatorios automáticos**. La solución analizaría información histórica de las citas para identificar aquellas con mayor riesgo de inasistencia. Cuando una cita presente riesgo alto, el sistema podría activar recordatorios adicionales por SMS, correo electrónico o aplicación y facilitar su confirmación o reprogramación.
 
 Este proyecto podría ayudar a reducir horas médicas perdidas, mejorar la experiencia del paciente y optimizar el uso de la capacidad disponible en las clínicas.
+
+## Mi idea de Agente de IA
+
+Propongo un agente de IA para reducir las inasistencias a las citas médicas. El agente analizaría información como la fecha y hora de la cita, la sede, la especialidad, el historial de asistencia del paciente y si la cita fue confirmada. Con esos datos identificaría las citas con mayor riesgo de no-show y activaría recordatorios adicionales por SMS, correo electrónico o aplicación. También podría ofrecer al paciente la opción de confirmar, cancelar o reprogramar, ayudando a liberar horas con anticipación y mejorar el uso de la agenda clínica.
