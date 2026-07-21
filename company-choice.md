@@ -1,60 +1,21 @@
-# Elección de empresa — HealthCore
+# Elección de empresa
 
 ## Empresa seleccionada
 
-**HealthCore**
+He elegido **HealthCore** porque presenta desafíos reales donde la inteligencia artificial y la automatización pueden generar mejoras concretas en la atención de pacientes y en la eficiencia operacional. Me interesa especialmente trabajar con procesos de agendamiento, integración de sistemas clínicos, análisis de datos y automatización de tareas administrativas. También considero valioso desarrollar soluciones que deban proteger información sensible y cumplir marcos como HIPAA y UK GDPR. Este escenario se relaciona con mi experiencia en integraciones, atención omnicanal, gestión de citas, APIs y automatización de procesos.
 
-## Motivo de la elección
+## Departamentos que encuentro más interesantes
 
-He elegido HealthCore porque presenta desafíos reales donde la inteligencia artificial, la automatización y la integración de sistemas pueden generar mejoras concretas en la atención de pacientes y en la eficiencia operacional.
+### Experiencia del Paciente y Acceso
 
-HealthCore opera una red de 12 clínicas distribuidas entre Estados Unidos y Reino Unido. Actualmente utiliza sistemas clínicos, agendas y plataformas de facturación que no están integrados, lo que dificulta obtener información consolidada y tomar decisiones en tiempo real.
+Este departamento me interesa porque HealthCore tiene una tasa de inasistencia del 22 % y no dispone de una plataforma online unificada para reservar, confirmar o reprogramar citas. Sus necesidades permiten trabajar con recordatorios automáticos, comunicación con pacientes, dashboards y modelos predictivos.
 
-## Problemas que considero más relevantes
+### Tecnología
 
-Los principales problemas que me interesa abordar durante el proyecto son:
+Este departamento me resulta interesante porque debe integrar sistemas clínicos, agendas, facturación y datos de personal que actualmente funcionan de forma aislada. Esto requiere diseñar una API central, pipelines de datos, telemetría, monitoreo y alertas en tiempo real.
 
-- La tasa de no presentación de pacientes del 22 %.
-- La ausencia de una plataforma online unificada para reservar citas.
-- La falta de comunicación entre los sistemas EHR de Estados Unidos y Reino Unido.
-- La inexistencia de una capa centralizada de datos.
-- La tasa de rechazo de reclamaciones del 14 %.
-- La falta de dashboards operacionales y ejecutivos en tiempo real.
-- La ausencia de telemetría, monitorización y alertas centralizadas.
-- La necesidad de cumplir con HIPAA y UK GDPR.
+## Reto de automatización o IA
 
-## Soluciones que me interesa desarrollar
+El reto que más me gustaría construir es un **sistema predictivo de no-shows integrado con recordatorios automáticos**. La solución analizaría información histórica de las citas para identificar aquellas con mayor riesgo de inasistencia. Cuando una cita presente riesgo alto, el sistema podría activar recordatorios adicionales por SMS, correo electrónico o aplicación y facilitar su confirmación o reprogramación.
 
-Durante los milestones del curso me gustaría construir progresivamente:
-
-- Una plataforma unificada de agendamiento.
-- Un sistema inteligente de recordatorios por SMS, correo electrónico o aplicación.
-- Un modelo predictivo para identificar citas con alto riesgo de no-show.
-- Una API central para pacientes, citas, clínicas, profesionales y facturación.
-- Dashboards clínicos, operacionales, financieros y ejecutivos.
-- Un sistema RAG sobre documentación técnica y normativa.
-- Automatizaciones para reportes, alertas y seguimiento de procesos.
-- Un asistente ejecutivo capaz de responder preguntas en lenguaje natural.
-- Flujos de auditoría y trazabilidad para el acceso a datos.
-
-## Relación con mis intereses y experiencia
-
-Esta elección se relaciona con mi interés en automatización de procesos, integración de plataformas, agendamiento, atención omnicanal, APIs, dashboards, inteligencia artificial y sistemas RAG.
-
-HealthCore también representa una oportunidad para profundizar en temas como modelos predictivos, gobierno del dato, observabilidad, cumplimiento normativo y protección de información sensible.
-
-## Impacto esperado
-
-El objetivo del proyecto será utilizar AI Engineering para:
-
-- Mejorar la experiencia del paciente.
-- Reducir las inasistencias.
-- Disminuir tareas administrativas.
-- Integrar sistemas aislados.
-- Facilitar decisiones basadas en datos.
-- Mejorar la trazabilidad y la seguridad.
-- Automatizar procesos operacionales y ejecutivos.
-
-## Compromiso
-
-Comprendo que HealthCore será la empresa utilizada como contexto transversal durante los próximos milestones y que esta elección no podrá modificarse una vez iniciada la Semana 1.
+Este proyecto podría ayudar a reducir horas médicas perdidas, mejorar la experiencia del paciente y optimizar el uso de la capacidad disponible en las clínicas.
