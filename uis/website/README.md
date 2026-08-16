@@ -42,6 +42,21 @@ Adicionalmente:
 - Boton de envio y boton de limpieza.
 - Mensaje de exito de solicitud de consulta (sin confirmar cita).
 
+### Formulario progresivo de 4 pasos
+Para reducir carga cognitiva y mejorar la experiencia sin eliminar datos del contexto, el formulario se organizo como wizard de un unico `<form>`:
+
+1. Datos personales.
+2. Preferencias de consulta.
+3. Informacion del paciente.
+4. Motivo y confirmacion.
+
+Comportamiento UX del wizard:
+- Indicador de progreso accesible (paso actual, nombre del paso y barra).
+- Navegacion con botones Continuar/Atras manteniendo valores.
+- Validacion por paso antes de avanzar.
+- Progressive disclosure en campos condicionales (`patient_id` y datos de seguro).
+- Validacion completa al enviar en el ultimo paso.
+
 ## Validaciones
 Validaciones implementadas en `validation.js`:
 - Nombre y apellido: 2-50, solo letras, con acentos/tilde/diacriticos permitidos (incluye n/ñ y u/ü).

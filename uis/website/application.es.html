@@ -45,7 +45,6 @@
       <section class="mb-8 rounded-2xl bg-white p-6 shadow">
         <h1 class="font-heading text-3xl font-bold">Solicitud de consulta para pacientes</h1>
         <p class="mt-3 text-hcSlate">Completa este formulario para solicitar una consulta. Este formulario no confirma ni reserva una cita. Nuestro equipo de recepción se pondrá en contacto contigo posteriormente.</p>
-        <p class="mt-4 rounded-lg border border-hcTeal/40 bg-hcTeal/10 p-3 text-sm"><strong>¿Eres un proveedor de salud u organización que busca asociarse con HealthCore?</strong> Contacta a nuestro equipo de operaciones en <a class="underline" href="mailto:partnerships@healthcore.com">partnerships@healthcore.com</a></p>
       </section>
 
       <section class="rounded-2xl bg-white p-6 shadow">
@@ -54,10 +53,28 @@
 
         <form id="applicationForm" data-lang="es" novalidate class="mt-6 space-y-6" aria-describedby="form-status">
           <div id="form-status" class="sr-only" aria-live="polite"></div>
+          <div id="wizard-status" class="sr-only" aria-live="polite"></div>
           <div id="success-message" class="hidden rounded-lg border border-green-700 bg-green-50 p-4 text-green-900" role="status" aria-live="polite"></div>
 
-          <section>
-            <h3 class="font-heading text-xl font-semibold">Datos personales</h3>
+          <section aria-label="Progreso del formulario" class="rounded-xl border border-hcNavy/15 bg-hcSand/70 p-4">
+            <div class="flex items-center justify-between gap-3">
+              <p id="progress-text" class="text-sm font-semibold text-hcNavy">Paso 1 de 4</p>
+              <p id="progress-step-name" class="text-sm text-hcSlate">Datos personales</p>
+            </div>
+            <div class="mt-3 h-2 w-full overflow-hidden rounded-full bg-hcNavy/15" aria-hidden="true">
+              <div id="progress-bar" class="h-full w-1/4 rounded-full bg-hcTeal transition-all duration-300"></div>
+            </div>
+            <ol class="mt-3 grid grid-cols-4 gap-2" aria-label="Pasos del formulario">
+              <li><span id="step-indicator-1" class="block rounded-full bg-hcTeal px-2 py-1 text-center text-xs font-semibold text-white" aria-current="step">1</span></li>
+              <li><span id="step-indicator-2" class="block rounded-full bg-hcNavy/15 px-2 py-1 text-center text-xs font-semibold text-hcNavy">2</span></li>
+              <li><span id="step-indicator-3" class="block rounded-full bg-hcNavy/15 px-2 py-1 text-center text-xs font-semibold text-hcNavy">3</span></li>
+              <li><span id="step-indicator-4" class="block rounded-full bg-hcNavy/15 px-2 py-1 text-center text-xs font-semibold text-hcNavy">4</span></li>
+            </ol>
+          </section>
+
+          <section data-step="1" class="wizard-step">
+            <h3 id="step-title-1" class="wizard-step-title font-heading text-xl font-semibold" tabindex="-1">Datos personales</h3>
+            <p class="mt-1 text-sm text-hcSlate">Cuéntanos cómo podemos identificarte y contactarte.</p>
             <div class="mt-4 grid gap-4 md:grid-cols-2">
               <div>
                 <label for="first_name" class="block font-semibold">Nombre *</label>
@@ -94,10 +111,14 @@
                 <p id="preferred_language-error" class="mt-1 text-sm text-red-700" aria-live="polite"></p>
               </div>
             </div>
+            <div class="mt-6 flex justify-end">
+              <button type="button" data-next-step="1" class="rounded-lg bg-hcCoral px-6 py-3 font-heading font-semibold text-hcNavy hover:bg-[#ff846f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-hcNavy">Continuar</button>
+            </div>
           </section>
 
-          <section>
-            <h3 class="font-heading text-xl font-semibold">Preferencias de consulta</h3>
+          <section data-step="2" class="wizard-step" hidden>
+            <h3 id="step-title-2" class="wizard-step-title font-heading text-xl font-semibold" tabindex="-1">Preferencias de consulta</h3>
+            <p class="mt-1 text-sm text-hcSlate">Indícanos dónde y cuándo prefieres recibir atención.</p>
             <div class="mt-4 grid gap-4 md:grid-cols-2">
               <div>
                 <label for="preferred_clinic" class="block font-semibold">Clínica preferida *</label>
@@ -144,10 +165,15 @@
               </div>
             </div>
             <p id="evening-warning" class="mt-3 hidden rounded-lg border border-amber-500 bg-amber-50 p-3 text-sm text-amber-900" aria-live="polite"></p>
+            <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-between">
+              <button type="button" data-prev-step="2" class="rounded-lg border border-hcNavy/40 px-6 py-3 font-heading font-semibold text-hcNavy hover:bg-hcSand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-hcNavy">Atrás</button>
+              <button type="button" data-next-step="2" class="rounded-lg bg-hcCoral px-6 py-3 font-heading font-semibold text-hcNavy hover:bg-[#ff846f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-hcNavy">Continuar</button>
+            </div>
           </section>
 
-          <section>
-            <h3 class="font-heading text-xl font-semibold">Perfil del paciente</h3>
+          <section data-step="3" class="wizard-step" hidden>
+            <h3 id="step-title-3" class="wizard-step-title font-heading text-xl font-semibold" tabindex="-1">Información del paciente</h3>
+            <p class="mt-1 text-sm text-hcSlate">Comparte datos de visita y seguro para facilitar la gestión de recepción.</p>
             <div class="mt-4 grid gap-4 md:grid-cols-2">
               <fieldset>
                 <legend class="font-semibold">¿Primera visita? *</legend>
@@ -173,22 +199,29 @@
                 <p id="has_insurance-error" class="mt-1 text-sm text-red-700" aria-live="polite"></p>
               </fieldset>
 
-              <div>
-                <label for="insurance_provider" class="block font-semibold">Aseguradora</label>
-                <input id="insurance_provider" name="insurance_provider" type="text" class="mt-1 w-full rounded-lg border border-hcNavy/30 px-3 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="insurance_provider-error" />
-                <p id="insurance_provider-error" class="mt-1 text-sm text-red-700" aria-live="polite"></p>
-              </div>
+              <div id="insurance-fields-wrapper" class="hidden md:col-span-2 grid gap-4 md:grid-cols-2">
+                <div>
+                  <label for="insurance_provider" class="block font-semibold">Aseguradora</label>
+                  <input id="insurance_provider" name="insurance_provider" type="text" class="mt-1 w-full rounded-lg border border-hcNavy/30 px-3 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="insurance_provider-error" />
+                  <p id="insurance_provider-error" class="mt-1 text-sm text-red-700" aria-live="polite"></p>
+                </div>
 
-              <div>
-                <label for="insurance_member_id" class="block font-semibold">ID de afiliado</label>
-                <input id="insurance_member_id" name="insurance_member_id" type="text" class="mt-1 w-full rounded-lg border border-hcNavy/30 px-3 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="insurance_member_id-error" />
-                <p id="insurance_member_id-error" class="mt-1 text-sm text-red-700" aria-live="polite"></p>
+                <div>
+                  <label for="insurance_member_id" class="block font-semibold">ID de afiliado</label>
+                  <input id="insurance_member_id" name="insurance_member_id" type="text" class="mt-1 w-full rounded-lg border border-hcNavy/30 px-3 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="insurance_member_id-error" />
+                  <p id="insurance_member_id-error" class="mt-1 text-sm text-red-700" aria-live="polite"></p>
+                </div>
               </div>
+            </div>
+            <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-between">
+              <button type="button" data-prev-step="3" class="rounded-lg border border-hcNavy/40 px-6 py-3 font-heading font-semibold text-hcNavy hover:bg-hcSand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-hcNavy">Atrás</button>
+              <button type="button" data-next-step="3" class="rounded-lg bg-hcCoral px-6 py-3 font-heading font-semibold text-hcNavy hover:bg-[#ff846f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-hcNavy">Continuar</button>
             </div>
           </section>
 
-          <section>
-            <h3 class="font-heading text-xl font-semibold">Consulta médica</h3>
+          <section data-step="4" class="wizard-step" hidden>
+            <h3 id="step-title-4" class="wizard-step-title font-heading text-xl font-semibold" tabindex="-1">Motivo de la consulta</h3>
+            <p class="mt-1 text-sm text-hcSlate">Describe brevemente el motivo de tu consulta antes de enviarla.</p>
             <div class="mt-4">
               <label for="health_concern" class="block font-semibold">Describe tu consulta médica *</label>
               <textarea id="health_concern" name="health_concern" rows="6" maxlength="500" class="mt-1 w-full rounded-lg border border-hcNavy/30 px-3 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="health_concern-hint health_concern-error"></textarea>
@@ -198,20 +231,24 @@
               </div>
               <p id="health_concern-error" class="mt-1 text-sm text-red-700" aria-live="polite"></p>
             </div>
-          </section>
+            <div class="mt-4 rounded-lg border border-hcTeal/40 bg-hcTeal/10 p-3 text-sm"><strong>¿Eres un proveedor de salud u organización que busca asociarse con HealthCore?</strong> Contacta a nuestro equipo de operaciones en <a class="underline" href="mailto:partnerships@healthcore.com">partnerships@healthcore.com</a></div>
 
-          <section>
-            <label class="inline-flex items-start gap-3" for="contact_consent">
-              <input id="contact_consent" name="contact_consent" type="checkbox" class="mt-1" aria-describedby="contact_consent-error" />
-              <span>Autorizo a HealthCore a contactarme sobre esta solicitud de consulta. *</span>
-            </label>
-            <p id="contact_consent-error" class="mt-1 text-sm text-red-700" aria-live="polite"></p>
-          </section>
+            <div class="mt-4">
+              <label class="inline-flex items-start gap-3" for="contact_consent">
+                <input id="contact_consent" name="contact_consent" type="checkbox" class="mt-1" aria-describedby="contact_consent-error" />
+                <span>Autorizo a HealthCore a contactarme sobre esta solicitud de consulta. *</span>
+              </label>
+              <p id="contact_consent-error" class="mt-1 text-sm text-red-700" aria-live="polite"></p>
+            </div>
 
-          <div class="flex flex-col gap-3 sm:flex-row">
-            <button type="submit" class="rounded-lg bg-hcCoral px-6 py-3 font-heading font-semibold text-hcNavy hover:bg-[#ff846f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-hcNavy">Enviar solicitud</button>
-            <button type="reset" id="resetButton" class="rounded-lg border border-hcNavy/40 px-6 py-3 font-heading font-semibold text-hcNavy hover:bg-hcSand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-hcNavy">Limpiar</button>
-          </div>
+            <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <button type="button" data-prev-step="4" class="rounded-lg border border-hcNavy/40 px-6 py-3 font-heading font-semibold text-hcNavy hover:bg-hcSand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-hcNavy">Atrás</button>
+              <div class="flex flex-col gap-3 sm:flex-row">
+                <button type="reset" id="resetButton" class="rounded-lg border border-hcNavy/40 bg-white px-6 py-3 font-heading font-semibold text-hcNavy hover:bg-hcSand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-hcNavy">Limpiar formulario</button>
+                <button type="submit" class="rounded-lg bg-hcCoral px-6 py-3 font-heading font-semibold text-hcNavy hover:bg-[#ff846f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-hcNavy">Enviar solicitud</button>
+              </div>
+            </div>
+          </section>
         </form>
       </section>
     </main>
@@ -222,6 +259,6 @@
       </div>
     </footer>
 
-    <script src="validation.js" defer></script>
+    <script src="validation.js?v=20260816" defer></script>
   </body>
 </html>

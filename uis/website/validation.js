@@ -90,6 +90,14 @@
   const counterEl = document.getElementById("health_concern-counter");
   const successEl = document.getElementById("success-message");
   const formStatusEl = document.getElementById("form-status");
+  const wizardStatusEl = document.getElementById("wizard-status");
+  const progressTextEl = document.getElementById("progress-text");
+  const progressStepNameEl = document.getElementById("progress-step-name");
+  const progressBarEl = document.getElementById("progress-bar");
+  const stepSections = Array.from(form.querySelectorAll("[data-step]"));
+  const nextButtons = Array.from(form.querySelectorAll("[data-next-step]"));
+  const prevButtons = Array.from(form.querySelectorAll("[data-prev-step]"));
+  const insuranceFieldsWrapper = document.getElementById("insurance-fields-wrapper");
 
   const errors = new Set();
   const touched = new Set();
@@ -103,6 +111,30 @@
     "HealthCore Atlanta": 19
   };
 
+  const stepConfig = {
+    1: ["first_name", "last_name", "date_of_birth", "email", "phone", "preferred_language"],
+    2: ["preferred_clinic", "preferred_date", "preferred_time", "service_type"],
+    3: ["new_patient", "patient_id", "has_insurance", "insurance_provider", "insurance_member_id"],
+    4: ["health_concern", "contact_consent"]
+  };
+
+  const stepNames = {
+    es: {
+      1: "Datos personales",
+      2: "Preferencias de consulta",
+      3: "Información del paciente",
+      4: "Motivo de la consulta"
+    },
+    en: {
+      1: "Personal details",
+      2: "Consultation preferences",
+      3: "Patient information",
+      4: "Reason for consultation"
+    }
+  };
+
+  let currentStep = 1;
+
   function normalize(value) {
     return String(value || "").trim();
   }
@@ -110,6 +142,86 @@
   function getRadioValue(nodeList) {
     const checked = Array.from(nodeList).find((radio) => radio.checked);
     return checked ? checked.value : "";
+  }
+
+  function getStepElement(step) {
+    return form.querySelector('[data-step="' + step + '"]');
+  }
+
+  function getStepTitleElement(step) {
+    return form.querySelector("#step-title-" + step);
+  }
+
+  function setVisibility(element, isVisible) {
+    if (!element) return;
+    if (isVisible) {
+      element.hidden = false;
+      element.classList.remove("hidden");
+    } else {
+      element.hidden = true;
+      element.classList.add("hidden");
+    }
+  }
+
+  function updateProgress(step) {
+    const totalSteps = 4;
+    const percent = (step / totalSteps) * 100;
+    if (progressTextEl) {
+      progressTextEl.textContent = lang === "es" ? "Paso " + step + " de 4" : "Step " + step + " of 4";
+    }
+    if (progressStepNameEl) {
+      progressStepNameEl.textContent = stepNames[lang][step];
+    }
+    if (progressBarEl) {
+      progressBarEl.style.width = percent + "%";
+    }
+
+    for (let i = 1; i <= totalSteps; i += 1) {
+      const indicator = document.getElementById("step-indicator-" + i);
+      if (!indicator) continue;
+      if (i === step) {
+        indicator.setAttribute("aria-current", "step");
+        indicator.classList.remove("bg-hcNavy/15", "text-hcNavy");
+        indicator.classList.add("bg-hcTeal", "text-white");
+      } else {
+        indicator.removeAttribute("aria-current");
+        indicator.classList.remove("bg-hcTeal", "text-white");
+        indicator.classList.add("bg-hcNavy/15", "text-hcNavy");
+      }
+    }
+  }
+
+  function showStep(step, moveFocus) {
+    currentStep = step;
+    stepSections.forEach((section, index) => {
+      const isCurrent = index + 1 === step;
+      setVisibility(section, isCurrent);
+    });
+
+    updateProgress(step);
+    if (wizardStatusEl) {
+      wizardStatusEl.textContent = (lang === "es" ? "Mostrando " : "Showing ") + stepNames[lang][step];
+    }
+
+    if (moveFocus) {
+      const heading = getStepTitleElement(step);
+      if (heading) {
+        heading.focus();
+      }
+    }
+  }
+
+  function updateConditionalVisibility() {
+    const newPatient = getRadioValue(fields.new_patient);
+    const hasInsurance = getRadioValue(fields.has_insurance);
+    setVisibility(patientIdWrapper, newPatient === "No");
+    setVisibility(insuranceFieldsWrapper, hasInsurance === "Yes");
+  }
+
+  function getFirstInvalidFieldInStep(step) {
+    const section = getStepElement(step);
+    if (!section) return null;
+    return section.querySelector('[aria-invalid="true"]');
   }
 
   function setFieldError(fieldName, message) {
@@ -304,6 +416,7 @@
     const memberId = normalize(fields.insurance_member_id.value);
 
     if (hasInsurance === "Yes") {
+      setVisibility(insuranceFieldsWrapper, true);
       let ok = true;
       if (!provider) {
         setFieldError("insurance_provider", messages[lang].insurance_provider_required);
@@ -330,6 +443,7 @@
       return ok;
     }
 
+    setVisibility(insuranceFieldsWrapper, false);
     fields.insurance_provider.removeAttribute("required");
     fields.insurance_member_id.removeAttribute("required");
     clearFieldError("insurance_provider");
@@ -342,13 +456,13 @@
     const patientId = normalize(fields.patient_id.value);
 
     if (newPatient === "No") {
-      patientIdWrapper.classList.remove("hidden");
+      setVisibility(patientIdWrapper, true);
       if (patientId && !/^HC-[A-Za-z0-9]{6}$/.test(patientId)) {
         setFieldError("patient_id", messages[lang].patient_id_format);
         return false;
       }
     } else {
-      patientIdWrapper.classList.add("hidden");
+      setVisibility(patientIdWrapper, false);
       fields.patient_id.value = "";
       clearFieldError("patient_id");
     }
@@ -460,6 +574,68 @@
     return checks.every(Boolean);
   }
 
+  function validateStep(step) {
+    const checks = stepConfig[step].map((fieldName) => validateField(fieldName));
+
+    if (step === 2) {
+      checks.push(validatePaediatricRule());
+      updateEveningWarning();
+    }
+    if (step === 3) {
+      updateConditionalVisibility();
+    }
+
+    return checks.every(Boolean);
+  }
+
+  function goToFirstStepWithError() {
+    const firstInvalid = form.querySelector('[aria-invalid="true"]');
+    if (!firstInvalid) {
+      if (paediatricRuleEl.textContent.trim()) {
+        showStep(2, false);
+        fields.service_type.focus();
+      }
+      return;
+    }
+
+    let targetStep = 1;
+    for (let step = 1; step <= 4; step += 1) {
+      const section = getStepElement(step);
+      if (section && section.contains(firstInvalid)) {
+        targetStep = step;
+        break;
+      }
+    }
+
+    showStep(targetStep, false);
+    const firstErrorInStep = getFirstInvalidFieldInStep(targetStep);
+    if (firstErrorInStep) {
+      firstErrorInStep.focus();
+    }
+  }
+
+  function nextStep() {
+    if (!validateStep(currentStep)) {
+      const firstError = getFirstInvalidFieldInStep(currentStep);
+      if (firstError) {
+        firstError.focus();
+      } else if (currentStep === 2 && paediatricRuleEl.textContent.trim()) {
+        fields.service_type.focus();
+      }
+      return;
+    }
+
+    if (currentStep < 4) {
+      showStep(currentStep + 1, true);
+    }
+  }
+
+  function previousStep() {
+    if (currentStep > 1) {
+      showStep(currentStep - 1, true);
+    }
+  }
+
   function clearDynamicState() {
     successEl.classList.add("hidden");
     successEl.textContent = "";
@@ -493,10 +669,12 @@
 
     touched.clear();
     errors.clear();
-    patientIdWrapper.classList.add("hidden");
+    setVisibility(patientIdWrapper, false);
+    setVisibility(insuranceFieldsWrapper, false);
     fields.insurance_provider.removeAttribute("required");
     fields.insurance_member_id.removeAttribute("required");
     updateCounter();
+    showStep(1, false);
   }
 
   function bindInput(name, element, eventName) {
@@ -552,11 +730,13 @@
     radio.addEventListener("change", () => {
       validateField("new_patient");
       validateField("patient_id");
+      updateConditionalVisibility();
     });
     radio.addEventListener("blur", () => {
       touched.add("new_patient");
       validateField("new_patient");
       validateField("patient_id");
+      updateConditionalVisibility();
     });
   });
 
@@ -564,34 +744,76 @@
     radio.addEventListener("change", () => {
       validateField("has_insurance");
       validateInsuranceFields();
+      updateConditionalVisibility();
     });
     radio.addEventListener("blur", () => {
       touched.add("has_insurance");
       validateField("has_insurance");
       validateInsuranceFields();
+      updateConditionalVisibility();
     });
+  });
+
+  nextButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      nextStep();
+    });
+  });
+
+  prevButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      previousStep();
+    });
+  });
+
+  // Event delegation makes step navigation resilient if buttons are re-rendered.
+  form.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+
+    const nextTrigger = target.closest("[data-next-step]");
+    if (nextTrigger) {
+      event.preventDefault();
+      nextStep();
+      return;
+    }
+
+    const prevTrigger = target.closest("[data-prev-step]");
+    if (prevTrigger) {
+      event.preventDefault();
+      previousStep();
+    }
   });
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     clearDynamicState();
 
+    if (currentStep < 4) {
+      nextStep();
+      return;
+    }
+
     const valid = validateAll();
     if (!valid) {
       formStatusEl.textContent = lang === "es" ? "Hay errores en el formulario" : "There are errors in the form";
-      const firstError = form.querySelector('[aria-invalid="true"]');
-      if (firstError) firstError.focus();
+      goToFirstStepWithError();
       return;
     }
 
     successEl.textContent = messages[lang].success;
     successEl.classList.remove("hidden");
     formStatusEl.textContent = messages[lang].success;
+    stepSections.forEach((section) => {
+      setVisibility(section, false);
+    });
   });
 
   form.addEventListener("reset", () => {
     window.setTimeout(() => {
       resetFormUi();
+      const firstField = fields.first_name;
+      if (firstField) firstField.focus();
     }, 0);
   });
 
@@ -604,5 +826,7 @@
   fields.date_of_birth.setAttribute("max", formatDate(today));
 
   updateCounter();
+  updateConditionalVisibility();
+  showStep(1, false);
   resetFormUi();
 })();
