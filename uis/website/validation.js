@@ -23,13 +23,13 @@
       insurance_provider_max: "La aseguradora no puede superar 100 caracteres",
       insurance_member_id_required: "Ingresa el ID de afiliado",
       insurance_member_id_format: "El ID de afiliado debe tener entre 6 y 20 caracteres alfanuméricos",
-      patient_id_format: "Si completas el Patient ID, debe seguir el formato HC- seguido de 6 caracteres alfanuméricos",
+      patient_id_format: "Si completas el ID de paciente, debe seguir el formato HC- seguido de 6 caracteres alfanuméricos",
       health_concern: "La consulta médica debe tener entre 20 y 500 caracteres",
       consent: "Debes autorizar el contacto para enviar la solicitud",
       paediatric_rule:
-        "Paediatric Care está disponible para pacientes menores de 18 años. Revisa la fecha de nacimiento o selecciona un servicio diferente.",
+        "La atención pediátrica está disponible para pacientes menores de 18 años. Revisa la fecha de nacimiento o selecciona un servicio diferente.",
       evening_warning:
-        "La franja Evening (5pm–8pm) puede tener disponibilidad limitada en esta clínica según su horario de cierre.",
+        "La franja Noche (5pm–8pm) puede tener disponibilidad limitada en esta clínica según su horario de cierre.",
       success:
         "Tu solicitud de consulta fue enviada correctamente. Nuestro equipo de recepción te contactará pronto para coordinar los próximos pasos."
     },

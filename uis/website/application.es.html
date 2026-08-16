@@ -105,15 +105,15 @@
               </div>
               <div>
                 <label for="phone" class="block font-semibold">Teléfono *</label>
-                <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+34 612 345 678" class="mt-1 w-full rounded-lg border border-hcNavy/25 bg-white px-3 py-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="phone-error" />
+                <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+1 305 555 0191" class="mt-1 w-full rounded-lg border border-hcNavy/25 bg-white px-3 py-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="phone-error" />
                 <p id="phone-error" class="mt-1 text-sm text-red-700" aria-live="polite"></p>
               </div>
               <div>
                 <label for="preferred_language" class="block font-semibold">Idioma preferido *</label>
                 <select id="preferred_language" name="preferred_language" class="mt-1 w-full rounded-lg border border-hcNavy/25 bg-white px-3 py-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="preferred_language-error">
                   <option value="">Selecciona una opción</option>
-                  <option value="English">English</option>
-                  <option value="Spanish">Spanish</option>
+                  <option value="English">Inglés</option>
+                  <option value="Spanish">Español</option>
                 </select>
                 <p id="preferred_language-error" class="mt-1 text-sm text-red-700" aria-live="polite"></p>
               </div>
@@ -149,9 +149,9 @@
                 <label for="preferred_time" class="block font-semibold">Franja horaria *</label>
                 <select id="preferred_time" name="preferred_time" class="mt-1 w-full rounded-lg border border-hcNavy/25 bg-white px-3 py-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="preferred_time-error evening-warning">
                   <option value="">Selecciona una franja</option>
-                  <option value="Morning (7am–12pm)">Morning (7am–12pm)</option>
-                  <option value="Afternoon (12pm–5pm)">Afternoon (12pm–5pm)</option>
-                  <option value="Evening (5pm–8pm)">Evening (5pm–8pm)</option>
+                  <option value="Morning (7am–12pm)">Mañana (7am–12pm)</option>
+                  <option value="Afternoon (12pm–5pm)">Tarde (12pm–5pm)</option>
+                  <option value="Evening (5pm–8pm)">Noche (5pm–8pm)</option>
                 </select>
                 <p id="preferred_time-error" class="mt-1 text-sm text-red-700" aria-live="polite"></p>
               </div>
@@ -159,13 +159,13 @@
                 <label for="service_type" class="block font-semibold">Servicio *</label>
                 <select id="service_type" name="service_type" class="mt-1 w-full rounded-lg border border-hcNavy/25 bg-white px-3 py-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="service_type-error paediatric-rule-error">
                   <option value="">Selecciona un servicio</option>
-                  <option value="Primary Care">Primary Care</option>
-                  <option value="Chronic Disease Management">Chronic Disease Management</option>
-                  <option value="Specialist Consultation">Specialist Consultation</option>
-                  <option value="Preventive Health">Preventive Health</option>
-                  <option value="Women's Health">Women's Health</option>
-                  <option value="Paediatric Care">Paediatric Care</option>
-                  <option value="Mental Health">Mental Health</option>
+                  <option value="Primary Care">Atención primaria</option>
+                  <option value="Chronic Disease Management">Manejo de enfermedades crónicas</option>
+                  <option value="Specialist Consultation">Consulta con especialista</option>
+                  <option value="Preventive Health">Salud preventiva</option>
+                  <option value="Women's Health">Salud de la mujer</option>
+                  <option value="Paediatric Care">Atención pediátrica</option>
+                  <option value="Mental Health">Salud mental</option>
                 </select>
                 <p id="service_type-error" class="mt-1 text-sm text-red-700" aria-live="polite"></p>
                 <p id="paediatric-rule-error" class="mt-1 text-sm text-red-700" aria-live="polite"></p>
@@ -192,7 +192,7 @@
               </fieldset>
 
               <div id="patient-id-wrapper" class="hidden">
-                <label for="patient_id" class="block font-semibold">Patient ID (opcional para pacientes recurrentes)</label>
+                <label for="patient_id" class="block font-semibold">ID de paciente (opcional para pacientes recurrentes)</label>
                 <input id="patient_id" name="patient_id" type="text" placeholder="HC-A3F291" class="mt-1 w-full rounded-lg border border-hcNavy/25 bg-white px-3 py-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="patient_id-error" />
                 <p id="patient_id-error" class="mt-1 text-sm text-red-700" aria-live="polite"></p>
               </div>

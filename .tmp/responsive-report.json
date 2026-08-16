@@ -1,0 +1,130 @@
+[
+  {
+    "page": "index.html",
+    "width": 375,
+    "overflow": false,
+    "overlapCount": 0,
+    "scrollWidth": 375,
+    "clientWidth": 375
+  },
+  {
+    "page": "index.html",
+    "width": 768,
+    "overflow": false,
+    "overlapCount": 0,
+    "scrollWidth": 768,
+    "clientWidth": 768
+  },
+  {
+    "page": "index.html",
+    "width": 1024,
+    "overflow": false,
+    "overlapCount": 0,
+    "scrollWidth": 1024,
+    "clientWidth": 1024
+  },
+  {
+    "page": "index.html",
+    "width": 1366,
+    "overflow": false,
+    "overlapCount": 0,
+    "scrollWidth": 1366,
+    "clientWidth": 1366
+  },
+  {
+    "page": "index.es.html",
+    "width": 375,
+    "overflow": false,
+    "overlapCount": 0,
+    "scrollWidth": 375,
+    "clientWidth": 375
+  },
+  {
+    "page": "index.es.html",
+    "width": 768,
+    "overflow": false,
+    "overlapCount": 0,
+    "scrollWidth": 768,
+    "clientWidth": 768
+  },
+  {
+    "page": "index.es.html",
+    "width": 1024,
+    "overflow": false,
+    "overlapCount": 0,
+    "scrollWidth": 1024,
+    "clientWidth": 1024
+  },
+  {
+    "page": "index.es.html",
+    "width": 1366,
+    "overflow": false,
+    "overlapCount": 0,
+    "scrollWidth": 1366,
+    "clientWidth": 1366
+  },
+  {
+    "page": "application.html",
+    "width": 375,
+    "overflow": false,
+    "overlapCount": 0,
+    "scrollWidth": 375,
+    "clientWidth": 375
+  },
+  {
+    "page": "application.html",
+    "width": 768,
+    "overflow": false,
+    "overlapCount": 0,
+    "scrollWidth": 768,
+    "clientWidth": 768
+  },
+  {
+    "page": "application.html",
+    "width": 1024,
+    "overflow": false,
+    "overlapCount": 0,
+    "scrollWidth": 1024,
+    "clientWidth": 1024
+  },
+  {
+    "page": "application.html",
+    "width": 1366,
+    "overflow": false,
+    "overlapCount": 0,
+    "scrollWidth": 1366,
+    "clientWidth": 1366
+  },
+  {
+    "page": "application.es.html",
+    "width": 375,
+    "overflow": false,
+    "overlapCount": 0,
+    "scrollWidth": 375,
+    "clientWidth": 375
+  },
+  {
+    "page": "application.es.html",
+    "width": 768,
+    "overflow": false,
+    "overlapCount": 0,
+    "scrollWidth": 768,
+    "clientWidth": 768
+  },
+  {
+    "page": "application.es.html",
+    "width": 1024,
+    "overflow": false,
+    "overlapCount": 0,
+    "scrollWidth": 1024,
+    "clientWidth": 1024
+  },
+  {
+    "page": "application.es.html",
+    "width": 1366,
+    "overflow": false,
+    "overlapCount": 0,
+    "scrollWidth": 1366,
+    "clientWidth": 1366
+  }
+]

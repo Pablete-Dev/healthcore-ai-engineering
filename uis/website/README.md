@@ -118,7 +118,7 @@ npx http-server . -p 3000 -a 0.0.0.0
 ## Pruebas
 Verificacion manual realizada:
 - Navegacion y enlaces entre landing/formulario EN/ES.
-- Responsive en mobile/tablet/desktop.
+- Responsive verificado en 375px, 768px, 1024px y desktop (1366px), sin overflow horizontal ni superposicion de elementos interactivos.
 - Reglas de validacion individuales y cruzadas.
 - Mensajes de error especificos y mensaje de exito.
 - Reset completo de estados, errores, warnings y campos condicionales.
