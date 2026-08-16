@@ -11,43 +11,50 @@
         theme: {
           extend: {
             colors: {
-              hcNavy: "#0b1f3a",
-              hcTeal: "#0d9488",
-              hcSand: "#f4efe6",
-              hcSlate: "#334155",
-              hcCoral: "#f97360"
+              hcNavy: "#181e42",
+              hcTeal: "#1d8d6b",
+              hcSand: "#f6faf8",
+              hcSlate: "#4a5568",
+              hcCoral: "#1d2141",
+              hcSky: "#ecf3f5",
+              hcBlue: "#4da9e9"
             },
             fontFamily: {
-              heading: ["Space Grotesk", "ui-sans-serif", "sans-serif"],
-              body: ["Source Sans 3", "ui-sans-serif", "sans-serif"]
+              heading: ["ui-sans-serif", "system-ui", "sans-serif"],
+              body: ["ui-sans-serif", "system-ui", "sans-serif"]
             }
           }
         }
       };
     </script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" />
   </head>
-  <body class="bg-hcSand text-hcNavy font-body antialiased">
+  <body class="bg-gradient-to-b from-emerald-50 via-hcSky to-white text-hcNavy font-body antialiased">
     <a class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-white focus:px-3 focus:py-2 focus:rounded" href="#main-content">Saltar al contenido principal</a>
 
-    <header class="border-b border-hcNavy/10 bg-white">
+    <header class="sticky top-0 z-20 border-b border-hcNavy/10 bg-white/95 backdrop-blur">
       <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-5 sm:px-6">
         <a class="font-heading text-2xl font-bold" href="index.es.html">HealthCore</a>
-        <nav aria-label="Selector de idioma" class="text-sm">
-          <a class="hover:underline" href="application.html" lang="en">EN</a>
-          <span aria-hidden="true">|</span>
-          <a class="font-bold underline" href="application.es.html" lang="es">ES</a>
-        </nav>
+        <div class="flex items-center gap-3">
+          <a href="application.es.html" class="hidden rounded-full bg-hcCoral px-4 py-2 text-sm font-semibold text-white hover:bg-[#161a35] sm:inline-flex">Portal pacientes</a>
+          <a href="application.es.html" class="hidden rounded-full bg-hcBlue px-4 py-2 text-sm font-semibold text-white hover:bg-[#3895d7] sm:inline-flex">Turnos hoy</a>
+          <nav aria-label="Selector de idioma" class="text-sm">
+            <a class="hover:underline" href="application.html" lang="en">EN</a>
+            <span aria-hidden="true">|</span>
+            <a class="font-bold underline" href="application.es.html" lang="es">ES</a>
+          </nav>
+        </div>
       </div>
     </header>
 
-    <main id="main-content" class="mx-auto max-w-5xl px-4 py-10 sm:px-6">
-      <section class="mb-8 rounded-2xl bg-white p-6 shadow">
-        <h1 class="font-heading text-3xl font-bold">Solicitud de consulta para pacientes</h1>
-        <p class="mt-3 text-hcSlate">Completa este formulario para solicitar una consulta. Este formulario no confirma ni reserva una cita. Nuestro equipo de recepción se pondrá en contacto contigo posteriormente.</p>
+    <main id="main-content" class="mx-auto max-w-5xl px-4 py-12 sm:px-6">
+      <section class="mb-8 overflow-hidden rounded-2xl border border-emerald-600/20 bg-white shadow-sm">
+        <div class="bg-gradient-to-r from-emerald-700 to-emerald-600 p-6 text-white">
+          <h1 class="font-heading text-3xl font-bold">Solicitud de consulta para pacientes</h1>
+          <p class="mt-3 text-white/90">Completa este formulario para solicitar una consulta. Este formulario no confirma ni reserva una cita. Nuestro equipo de recepción se pondrá en contacto contigo posteriormente.</p>
+        </div>
       </section>
 
-      <section class="rounded-2xl bg-white p-6 shadow">
+      <section class="rounded-2xl border border-emerald-600/20 bg-white p-6 shadow-sm">
         <h2 class="font-heading text-2xl font-semibold">Formulario de solicitud</h2>
         <p class="mt-2 text-sm text-hcSlate">Todos los campos obligatorios deben completarse antes de enviar.</p>
 
@@ -56,19 +63,19 @@
           <div id="wizard-status" class="sr-only" aria-live="polite"></div>
           <div id="success-message" class="hidden rounded-lg border border-green-700 bg-green-50 p-4 text-green-900" role="status" aria-live="polite"></div>
 
-          <section aria-label="Progreso del formulario" class="rounded-xl border border-hcNavy/15 bg-hcSand/70 p-4">
+          <section aria-label="Progreso del formulario" class="rounded-xl border border-emerald-600/25 bg-emerald-50 p-4">
             <div class="flex items-center justify-between gap-3">
               <p id="progress-text" class="text-sm font-semibold text-hcNavy">Paso 1 de 4</p>
               <p id="progress-step-name" class="text-sm text-hcSlate">Datos personales</p>
             </div>
-            <div class="mt-3 h-2 w-full overflow-hidden rounded-full bg-hcNavy/15" aria-hidden="true">
+            <div class="mt-3 h-2 w-full overflow-hidden rounded-full bg-white" aria-hidden="true">
               <div id="progress-bar" class="h-full w-1/4 rounded-full bg-hcTeal transition-all duration-300"></div>
             </div>
             <ol class="mt-3 grid grid-cols-4 gap-2" aria-label="Pasos del formulario">
-              <li><span id="step-indicator-1" class="block rounded-full bg-hcTeal px-2 py-1 text-center text-xs font-semibold text-white" aria-current="step">1</span></li>
-              <li><span id="step-indicator-2" class="block rounded-full bg-hcNavy/15 px-2 py-1 text-center text-xs font-semibold text-hcNavy">2</span></li>
-              <li><span id="step-indicator-3" class="block rounded-full bg-hcNavy/15 px-2 py-1 text-center text-xs font-semibold text-hcNavy">3</span></li>
-              <li><span id="step-indicator-4" class="block rounded-full bg-hcNavy/15 px-2 py-1 text-center text-xs font-semibold text-hcNavy">4</span></li>
+              <li><span id="step-indicator-1" class="block rounded-full bg-emerald-700 px-2 py-1 text-center text-xs font-semibold text-white" aria-current="step">1</span></li>
+              <li><span id="step-indicator-2" class="block rounded-full border border-slate-300 bg-white px-2 py-1 text-center text-xs font-semibold text-slate-500">2</span></li>
+              <li><span id="step-indicator-3" class="block rounded-full border border-slate-300 bg-white px-2 py-1 text-center text-xs font-semibold text-slate-500">3</span></li>
+              <li><span id="step-indicator-4" class="block rounded-full border border-slate-300 bg-white px-2 py-1 text-center text-xs font-semibold text-slate-500">4</span></li>
             </ol>
           </section>
 
@@ -78,32 +85,32 @@
             <div class="mt-4 grid gap-4 md:grid-cols-2">
               <div>
                 <label for="first_name" class="block font-semibold">Nombre *</label>
-                <input id="first_name" name="first_name" type="text" autocomplete="given-name" class="mt-1 w-full rounded-lg border border-hcNavy/30 px-3 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="first_name-error" />
+                <input id="first_name" name="first_name" type="text" autocomplete="given-name" class="mt-1 w-full rounded-lg border border-hcNavy/25 bg-white px-3 py-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="first_name-error" />
                 <p id="first_name-error" class="mt-1 text-sm text-red-700" aria-live="polite"></p>
               </div>
               <div>
                 <label for="last_name" class="block font-semibold">Apellido *</label>
-                <input id="last_name" name="last_name" type="text" autocomplete="family-name" class="mt-1 w-full rounded-lg border border-hcNavy/30 px-3 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="last_name-error" />
+                <input id="last_name" name="last_name" type="text" autocomplete="family-name" class="mt-1 w-full rounded-lg border border-hcNavy/25 bg-white px-3 py-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="last_name-error" />
                 <p id="last_name-error" class="mt-1 text-sm text-red-700" aria-live="polite"></p>
               </div>
               <div>
                 <label for="date_of_birth" class="block font-semibold">Fecha de nacimiento *</label>
-                <input id="date_of_birth" name="date_of_birth" type="date" class="mt-1 w-full rounded-lg border border-hcNavy/30 px-3 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="date_of_birth-error" />
+                <input id="date_of_birth" name="date_of_birth" type="date" class="mt-1 w-full rounded-lg border border-hcNavy/25 bg-white px-3 py-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="date_of_birth-error" />
                 <p id="date_of_birth-error" class="mt-1 text-sm text-red-700" aria-live="polite"></p>
               </div>
               <div>
                 <label for="email" class="block font-semibold">Correo electrónico *</label>
-                <input id="email" name="email" type="email" autocomplete="email" class="mt-1 w-full rounded-lg border border-hcNavy/30 px-3 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="email-error" />
+                <input id="email" name="email" type="email" autocomplete="email" class="mt-1 w-full rounded-lg border border-hcNavy/25 bg-white px-3 py-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="email-error" />
                 <p id="email-error" class="mt-1 text-sm text-red-700" aria-live="polite"></p>
               </div>
               <div>
                 <label for="phone" class="block font-semibold">Teléfono *</label>
-                <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+34 612 345 678" class="mt-1 w-full rounded-lg border border-hcNavy/30 px-3 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="phone-error" />
+                <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+34 612 345 678" class="mt-1 w-full rounded-lg border border-hcNavy/25 bg-white px-3 py-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="phone-error" />
                 <p id="phone-error" class="mt-1 text-sm text-red-700" aria-live="polite"></p>
               </div>
               <div>
                 <label for="preferred_language" class="block font-semibold">Idioma preferido *</label>
-                <select id="preferred_language" name="preferred_language" class="mt-1 w-full rounded-lg border border-hcNavy/30 px-3 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="preferred_language-error">
+                <select id="preferred_language" name="preferred_language" class="mt-1 w-full rounded-lg border border-hcNavy/25 bg-white px-3 py-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="preferred_language-error">
                   <option value="">Selecciona una opción</option>
                   <option value="English">English</option>
                   <option value="Spanish">Spanish</option>
@@ -112,7 +119,7 @@
               </div>
             </div>
             <div class="mt-6 flex justify-end">
-              <button type="button" data-next-step="1" class="rounded-lg bg-hcCoral px-6 py-3 font-heading font-semibold text-hcNavy hover:bg-[#ff846f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-hcNavy">Continuar</button>
+              <button type="button" data-next-step="1" class="rounded-full bg-emerald-700 px-6 py-3 font-heading font-semibold text-white hover:bg-emerald-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-emerald-600">Continuar</button>
             </div>
           </section>
 
@@ -122,7 +129,7 @@
             <div class="mt-4 grid gap-4 md:grid-cols-2">
               <div>
                 <label for="preferred_clinic" class="block font-semibold">Clínica preferida *</label>
-                <select id="preferred_clinic" name="preferred_clinic" class="mt-1 w-full rounded-lg border border-hcNavy/30 px-3 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="preferred_clinic-error evening-warning">
+                <select id="preferred_clinic" name="preferred_clinic" class="mt-1 w-full rounded-lg border border-hcNavy/25 bg-white px-3 py-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="preferred_clinic-error evening-warning">
                   <option value="">Selecciona una clínica</option>
                   <option value="HealthCore Austin Central">HealthCore Austin Central</option>
                   <option value="HealthCore Austin North">HealthCore Austin North</option>
@@ -135,12 +142,12 @@
               </div>
               <div>
                 <label for="preferred_date" class="block font-semibold">Fecha preferida *</label>
-                <input id="preferred_date" name="preferred_date" type="date" class="mt-1 w-full rounded-lg border border-hcNavy/30 px-3 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="preferred_date-error" />
+                <input id="preferred_date" name="preferred_date" type="date" class="mt-1 w-full rounded-lg border border-hcNavy/25 bg-white px-3 py-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="preferred_date-error" />
                 <p id="preferred_date-error" class="mt-1 text-sm text-red-700" aria-live="polite"></p>
               </div>
               <div>
                 <label for="preferred_time" class="block font-semibold">Franja horaria *</label>
-                <select id="preferred_time" name="preferred_time" class="mt-1 w-full rounded-lg border border-hcNavy/30 px-3 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="preferred_time-error evening-warning">
+                <select id="preferred_time" name="preferred_time" class="mt-1 w-full rounded-lg border border-hcNavy/25 bg-white px-3 py-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="preferred_time-error evening-warning">
                   <option value="">Selecciona una franja</option>
                   <option value="Morning (7am–12pm)">Morning (7am–12pm)</option>
                   <option value="Afternoon (12pm–5pm)">Afternoon (12pm–5pm)</option>
@@ -150,7 +157,7 @@
               </div>
               <div>
                 <label for="service_type" class="block font-semibold">Servicio *</label>
-                <select id="service_type" name="service_type" class="mt-1 w-full rounded-lg border border-hcNavy/30 px-3 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="service_type-error paediatric-rule-error">
+                <select id="service_type" name="service_type" class="mt-1 w-full rounded-lg border border-hcNavy/25 bg-white px-3 py-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="service_type-error paediatric-rule-error">
                   <option value="">Selecciona un servicio</option>
                   <option value="Primary Care">Primary Care</option>
                   <option value="Chronic Disease Management">Chronic Disease Management</option>
@@ -166,8 +173,8 @@
             </div>
             <p id="evening-warning" class="mt-3 hidden rounded-lg border border-amber-500 bg-amber-50 p-3 text-sm text-amber-900" aria-live="polite"></p>
             <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-between">
-              <button type="button" data-prev-step="2" class="rounded-lg border border-hcNavy/40 px-6 py-3 font-heading font-semibold text-hcNavy hover:bg-hcSand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-hcNavy">Atrás</button>
-              <button type="button" data-next-step="2" class="rounded-lg bg-hcCoral px-6 py-3 font-heading font-semibold text-hcNavy hover:bg-[#ff846f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-hcNavy">Continuar</button>
+              <button type="button" data-prev-step="2" class="rounded-full border border-hcNavy/35 bg-white px-6 py-3 font-heading font-semibold text-hcNavy hover:bg-hcSky focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-hcTeal">Atrás</button>
+              <button type="button" data-next-step="2" class="rounded-full bg-emerald-700 px-6 py-3 font-heading font-semibold text-white hover:bg-emerald-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-emerald-600">Continuar</button>
             </div>
           </section>
 
@@ -186,7 +193,7 @@
 
               <div id="patient-id-wrapper" class="hidden">
                 <label for="patient_id" class="block font-semibold">Patient ID (opcional para pacientes recurrentes)</label>
-                <input id="patient_id" name="patient_id" type="text" placeholder="HC-A3F291" class="mt-1 w-full rounded-lg border border-hcNavy/30 px-3 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="patient_id-error" />
+                <input id="patient_id" name="patient_id" type="text" placeholder="HC-A3F291" class="mt-1 w-full rounded-lg border border-hcNavy/25 bg-white px-3 py-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="patient_id-error" />
                 <p id="patient_id-error" class="mt-1 text-sm text-red-700" aria-live="polite"></p>
               </div>
 
@@ -202,20 +209,20 @@
               <div id="insurance-fields-wrapper" class="hidden md:col-span-2 grid gap-4 md:grid-cols-2">
                 <div>
                   <label for="insurance_provider" class="block font-semibold">Aseguradora</label>
-                  <input id="insurance_provider" name="insurance_provider" type="text" class="mt-1 w-full rounded-lg border border-hcNavy/30 px-3 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="insurance_provider-error" />
+                  <input id="insurance_provider" name="insurance_provider" type="text" class="mt-1 w-full rounded-lg border border-hcNavy/25 bg-white px-3 py-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="insurance_provider-error" />
                   <p id="insurance_provider-error" class="mt-1 text-sm text-red-700" aria-live="polite"></p>
                 </div>
 
                 <div>
                   <label for="insurance_member_id" class="block font-semibold">ID de afiliado</label>
-                  <input id="insurance_member_id" name="insurance_member_id" type="text" class="mt-1 w-full rounded-lg border border-hcNavy/30 px-3 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="insurance_member_id-error" />
+                  <input id="insurance_member_id" name="insurance_member_id" type="text" class="mt-1 w-full rounded-lg border border-hcNavy/25 bg-white px-3 py-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="insurance_member_id-error" />
                   <p id="insurance_member_id-error" class="mt-1 text-sm text-red-700" aria-live="polite"></p>
                 </div>
               </div>
             </div>
             <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-between">
-              <button type="button" data-prev-step="3" class="rounded-lg border border-hcNavy/40 px-6 py-3 font-heading font-semibold text-hcNavy hover:bg-hcSand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-hcNavy">Atrás</button>
-              <button type="button" data-next-step="3" class="rounded-lg bg-hcCoral px-6 py-3 font-heading font-semibold text-hcNavy hover:bg-[#ff846f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-hcNavy">Continuar</button>
+              <button type="button" data-prev-step="3" class="rounded-full border border-hcNavy/35 bg-white px-6 py-3 font-heading font-semibold text-hcNavy hover:bg-hcSky focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-hcTeal">Atrás</button>
+              <button type="button" data-next-step="3" class="rounded-full bg-emerald-700 px-6 py-3 font-heading font-semibold text-white hover:bg-emerald-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-emerald-600">Continuar</button>
             </div>
           </section>
 
@@ -224,14 +231,14 @@
             <p class="mt-1 text-sm text-hcSlate">Describe brevemente el motivo de tu consulta antes de enviarla.</p>
             <div class="mt-4">
               <label for="health_concern" class="block font-semibold">Describe tu consulta médica *</label>
-              <textarea id="health_concern" name="health_concern" rows="6" maxlength="500" class="mt-1 w-full rounded-lg border border-hcNavy/30 px-3 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="health_concern-hint health_concern-error"></textarea>
+              <textarea id="health_concern" name="health_concern" rows="6" maxlength="500" class="mt-1 w-full rounded-lg border border-hcNavy/25 bg-white px-3 py-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-describedby="health_concern-hint health_concern-error"></textarea>
               <div class="mt-1 flex items-center justify-between text-sm text-hcSlate">
                 <p id="health_concern-hint">Mínimo 20 caracteres, máximo 500 caracteres.</p>
                 <p id="health_concern-counter" aria-live="polite">0 / 500</p>
               </div>
               <p id="health_concern-error" class="mt-1 text-sm text-red-700" aria-live="polite"></p>
             </div>
-            <div class="mt-4 rounded-lg border border-hcTeal/40 bg-hcTeal/10 p-3 text-sm"><strong>¿Eres un proveedor de salud u organización que busca asociarse con HealthCore?</strong> Contacta a nuestro equipo de operaciones en <a class="underline" href="mailto:partnerships@healthcore.com">partnerships@healthcore.com</a></div>
+            <div class="mt-4 rounded-lg border border-hcTeal/30 bg-hcSky p-3 text-sm"><strong>¿Eres un proveedor de salud u organización que busca asociarse con HealthCore?</strong> Contacta a nuestro equipo de operaciones en <a class="font-semibold text-hcTeal underline" href="mailto:partnerships@healthcore.com">partnerships@healthcore.com</a></div>
 
             <div class="mt-4">
               <label class="inline-flex items-start gap-3" for="contact_consent">
@@ -242,10 +249,10 @@
             </div>
 
             <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <button type="button" data-prev-step="4" class="rounded-lg border border-hcNavy/40 px-6 py-3 font-heading font-semibold text-hcNavy hover:bg-hcSand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-hcNavy">Atrás</button>
+              <button type="button" data-prev-step="4" class="rounded-full border border-hcNavy/35 bg-white px-6 py-3 font-heading font-semibold text-hcNavy hover:bg-hcSky focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-hcTeal">Atrás</button>
               <div class="flex flex-col gap-3 sm:flex-row">
-                <button type="reset" id="resetButton" class="rounded-lg border border-hcNavy/40 bg-white px-6 py-3 font-heading font-semibold text-hcNavy hover:bg-hcSand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-hcNavy">Limpiar formulario</button>
-                <button type="submit" class="rounded-lg bg-hcCoral px-6 py-3 font-heading font-semibold text-hcNavy hover:bg-[#ff846f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-hcNavy">Enviar solicitud</button>
+                <button type="reset" id="resetButton" class="rounded-full border border-hcNavy/35 bg-white px-6 py-3 font-heading font-semibold text-hcNavy hover:bg-hcSky focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-hcTeal">Limpiar formulario</button>
+                <button type="submit" class="rounded-full bg-emerald-700 px-6 py-3 font-heading font-semibold text-white hover:bg-emerald-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-emerald-600">Enviar solicitud</button>
               </div>
             </div>
           </section>
@@ -253,7 +260,7 @@
       </section>
     </main>
 
-    <footer class="mt-10 bg-[#061225] text-white">
+    <footer class="mt-10 bg-hcCoral text-white">
       <div class="mx-auto max-w-5xl px-4 py-6 text-sm sm:px-6">
         <p>© 2025 HealthCore. Todos los derechos reservados.</p>
       </div>

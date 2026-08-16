@@ -181,12 +181,16 @@
       if (!indicator) continue;
       if (i === step) {
         indicator.setAttribute("aria-current", "step");
-        indicator.classList.remove("bg-hcNavy/15", "text-hcNavy");
-        indicator.classList.add("bg-hcTeal", "text-white");
+        indicator.classList.remove("bg-white", "text-hcNavy", "border", "border-hcNavy/20", "bg-hcNavy/15", "bg-hcSky", "border-hcTeal/30", "bg-hcBlue", "text-slate-500", "border-slate-300", "bg-green-500", "border-green-500");
+        indicator.classList.add("bg-emerald-700", "text-white");
+      } else if (i < step) {
+        indicator.removeAttribute("aria-current");
+        indicator.classList.remove("bg-hcTeal", "bg-emerald-700", "bg-white", "text-hcNavy", "border", "border-hcNavy/20", "bg-hcNavy/15", "bg-hcSky", "text-slate-500", "border-slate-300", "bg-hcBlue", "border-hcBlue");
+        indicator.classList.add("bg-green-500", "text-white", "border", "border-green-500");
       } else {
         indicator.removeAttribute("aria-current");
-        indicator.classList.remove("bg-hcTeal", "text-white");
-        indicator.classList.add("bg-hcNavy/15", "text-hcNavy");
+        indicator.classList.remove("bg-hcTeal", "bg-emerald-700", "text-white", "bg-hcSky", "text-hcTeal", "border-hcTeal/30", "bg-hcBlue", "border-hcBlue", "text-hcNavy", "border-hcNavy/20", "bg-green-500", "border-green-500");
+        indicator.classList.add("bg-white", "text-slate-500", "border", "border-slate-300");
       }
     }
   }

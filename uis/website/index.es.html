@@ -14,27 +14,25 @@
         theme: {
           extend: {
             colors: {
-              hcNavy: "#0b1f3a",
-              hcTeal: "#0d9488",
-              hcSand: "#f4efe6",
-              hcSlate: "#334155",
-              hcCoral: "#f97360"
+              hcNavy: "#181e42",
+              hcTeal: "#1d8d6b",
+              hcSand: "#f6faf8",
+              hcSlate: "#4a5568",
+              hcCoral: "#1d2141",
+              hcSky: "#ecf3f5",
+              hcBlue: "#4da9e9"
             },
             fontFamily: {
-              heading: ["Space Grotesk", "ui-sans-serif", "sans-serif"],
-              body: ["Source Sans 3", "ui-sans-serif", "sans-serif"]
+              heading: ["ui-sans-serif", "system-ui", "sans-serif"],
+              body: ["ui-sans-serif", "system-ui", "sans-serif"]
             },
             boxShadow: {
-              soft: "0 12px 35px rgba(11,31,58,0.12)"
+              soft: "0 14px 32px rgba(24, 30, 66, 0.12)"
             }
           }
         }
       };
     </script>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
-    />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -48,147 +46,243 @@
           {
             "@type": "MedicalClinic",
             "name": "HealthCore Austin Central",
-            "telephone": "+1 512 555 0101",
-            "openingHours": "Mo-Sa 07:00-20:00",
+            "telephone": "+1 512 340 8800",
+            "openingHours": "Mo-Fr 07:00-20:00; Sa 09:00-15:00",
             "parentOrganization": { "@type": "MedicalOrganization", "name": "HealthCore" }
           },
           {
             "@type": "MedicalClinic",
             "name": "HealthCore Austin North",
-            "telephone": "+1 512 555 0102",
-            "openingHours": "Mo-Sa 07:00-19:00",
+            "telephone": "+1 512 340 8810",
+            "openingHours": "Mo-Fr 08:00-19:00",
             "parentOrganization": { "@type": "MedicalOrganization", "name": "HealthCore" }
           },
           {
             "@type": "MedicalClinic",
             "name": "HealthCore San Antonio",
-            "telephone": "+1 210 555 0103",
-            "openingHours": "Mo-Sa 07:00-18:00",
+            "telephone": "+1 210 720 4400",
+            "openingHours": "Mo-Fr 08:00-18:00; Sa 09:00-13:00",
             "parentOrganization": { "@type": "MedicalOrganization", "name": "HealthCore" }
           },
           {
             "@type": "MedicalClinic",
             "name": "HealthCore Miami",
-            "telephone": "+1 305 555 0104",
-            "openingHours": "Mo-Sa 07:00-20:00",
+            "telephone": "+1 305 510 7700",
+            "openingHours": "Mo-Fr 07:00-20:00; Sa 09:00-16:00",
             "parentOrganization": { "@type": "MedicalOrganization", "name": "HealthCore" }
           },
           {
             "@type": "MedicalClinic",
             "name": "HealthCore Orlando",
-            "telephone": "+1 407 555 0105",
-            "openingHours": "Mo-Sa 07:00-18:00",
+            "telephone": "+1 407 892 6600",
+            "openingHours": "Mo-Fr 08:00-18:00",
             "parentOrganization": { "@type": "MedicalOrganization", "name": "HealthCore" }
           },
           {
             "@type": "MedicalClinic",
             "name": "HealthCore Atlanta",
-            "telephone": "+1 404 555 0106",
-            "openingHours": "Mo-Sa 07:00-19:00",
+            "telephone": "+1 404 330 9900",
+            "openingHours": "Mo-Fr 08:00-19:00",
             "parentOrganization": { "@type": "MedicalOrganization", "name": "HealthCore" }
           }
         ]
       }
     </script>
   </head>
-  <body class="bg-hcSand text-hcNavy font-body antialiased">
+  <body class="bg-white text-hcNavy font-body antialiased">
     <a class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-white focus:px-3 focus:py-2 focus:rounded" href="#main-content">Saltar al contenido principal</a>
 
-    <header class="relative overflow-hidden border-b border-hcNavy/10 bg-gradient-to-br from-hcNavy via-hcNavy to-hcTeal text-white">
-      <div class="absolute inset-0 opacity-20" aria-hidden="true">
-        <svg class="h-full w-full" viewBox="0 0 1200 300" preserveAspectRatio="none">
-          <path d="M0,180 C250,90 320,260 600,160 C860,70 970,210 1200,120 L1200,300 L0,300 Z" fill="#ffffff"></path>
-        </svg>
-      </div>
-      <div class="relative mx-auto max-w-6xl px-4 sm:px-6">
-        <div class="flex items-center justify-between py-5">
-          <p class="font-heading text-2xl font-bold tracking-tight">HealthCore</p>
-          <button id="menuButton" class="md:hidden rounded border border-white/40 px-3 py-2 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-white" aria-expanded="false" aria-controls="mobileMenu">Menú</button>
+    <header class="sticky top-0 z-20 border-b border-hcNavy/10 bg-white/95 backdrop-blur">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between gap-6 py-5">
+          <p class="shrink-0 font-heading text-3xl font-bold tracking-tight">HealthCore</p>
+          <button id="menuButton" class="md:hidden rounded border border-hcNavy/30 px-3 py-2 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" aria-expanded="false" aria-controls="mobileMenu">Menú</button>
           <nav aria-label="Principal" class="hidden md:block">
-            <ul class="flex items-center gap-6 text-sm font-semibold">
-              <li><a class="hover:text-hcSand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded" href="#home">Inicio</a></li>
-              <li><a class="hover:text-hcSand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded" href="#services">Servicios</a></li>
-              <li><a class="hover:text-hcSand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded" href="#locations">Ubicaciones</a></li>
-              <li><a class="hover:text-hcSand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded" href="#contact">Contacto</a></li>
+            <ul class="flex items-center gap-8 text-base font-semibold">
+              <li><a class="hover:text-hcTeal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal rounded" href="#home">Inicio</a></li>
+              <li><a class="hover:text-hcTeal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal rounded" href="#services">Servicios</a></li>
+              <li><a class="hover:text-hcTeal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal rounded" href="#locations">Ubicaciones</a></li>
+              <li><a class="hover:text-hcTeal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal rounded" href="#contact">Contacto</a></li>
             </ul>
           </nav>
-          <p class="hidden md:block text-sm" aria-label="Selector de idioma"><a class="hover:underline" href="index.html" lang="en">EN</a> <span aria-hidden="true">|</span> <a class="font-bold underline" href="index.es.html" lang="es">ES</a></p>
+          <div class="hidden items-center gap-4 md:flex">
+            <a href="application.es.html" class="rounded-full bg-hcCoral px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#161a35] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal">Portal pacientes</a>
+            <a href="application.es.html" class="rounded-full bg-hcBlue px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#3895d7] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal">Turnos hoy</a>
+            <div class="inline-flex rounded-full border border-hcNavy/20 bg-white p-1 text-sm" aria-label="Selector de idioma">
+              <a class="rounded-full px-3 py-1 font-semibold text-hcNavy hover:bg-hcSky" href="index.html" lang="en">EN</a>
+              <a class="rounded-full bg-hcNavy px-3 py-1 font-semibold text-white" href="index.es.html" lang="es" aria-current="page">ES</a>
+            </div>
+          </div>
         </div>
         <div id="mobileMenu" class="hidden md:hidden pb-4" aria-label="Navegación móvil">
           <ul class="space-y-2 text-sm font-semibold">
-            <li><a class="block rounded px-2 py-1 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white" href="#home">Inicio</a></li>
-            <li><a class="block rounded px-2 py-1 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white" href="#services">Servicios</a></li>
-            <li><a class="block rounded px-2 py-1 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white" href="#locations">Ubicaciones</a></li>
-            <li><a class="block rounded px-2 py-1 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white" href="#contact">Contacto</a></li>
-            <li><a class="block rounded px-2 py-1 hover:bg-white/10" href="index.html" lang="en">EN</a></li>
-            <li><a class="block rounded px-2 py-1 hover:bg-white/10" href="index.es.html" lang="es">ES</a></li>
+            <li><a class="block rounded px-2 py-1 hover:bg-hcSky focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" href="#home">Inicio</a></li>
+            <li><a class="block rounded px-2 py-1 hover:bg-hcSky focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" href="#services">Servicios</a></li>
+            <li><a class="block rounded px-2 py-1 hover:bg-hcSky focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" href="#locations">Ubicaciones</a></li>
+            <li><a class="block rounded px-2 py-1 hover:bg-hcSky focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcTeal" href="#contact">Contacto</a></li>
+            <li><a class="block rounded px-2 py-1 hover:bg-hcSky" href="application.es.html">Portal pacientes</a></li>
+            <li><a class="block rounded px-2 py-1 hover:bg-hcSky" href="application.es.html">Turnos hoy</a></li>
+            <li class="pt-1">
+              <div class="inline-flex rounded-full border border-hcNavy/20 bg-white p-1 text-sm" aria-label="Selector de idioma móvil">
+                <a class="rounded-full px-3 py-1 font-semibold text-hcNavy hover:bg-hcSky" href="index.html" lang="en">EN</a>
+                <a class="rounded-full bg-hcNavy px-3 py-1 font-semibold text-white" href="index.es.html" lang="es" aria-current="page">ES</a>
+              </div>
+            </li>
           </ul>
         </div>
       </div>
     </header>
 
     <main id="main-content">
-      <section id="home" class="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:py-20">
-        <article class="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
-          <div>
-            <h1 class="font-heading text-4xl font-bold leading-tight sm:text-5xl">Atención médica que se adapta a tu vida</h1>
-            <p class="mt-5 max-w-2xl text-lg text-hcSlate">12 clínicas ambulatorias en EE. UU. y Reino Unido que ofrecen citas el mismo día, horarios extendidos y atención bilingüe, para que recibas la atención que necesitas, cuando la necesitas.</p>
-            <a href="application.es.html" class="mt-8 inline-flex items-center rounded-full bg-hcCoral px-7 py-3 font-heading text-base font-semibold text-hcNavy shadow-soft transition hover:-translate-y-0.5 hover:bg-[#ff846f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-hcNavy">Solicitar una cita</a>
+      <section id="home" data-hero-carousel class="relative overflow-hidden bg-hcTeal">
+        <div class="pointer-events-none absolute left-0 top-0 hidden h-24 w-24 opacity-30 md:block" aria-hidden="true">
+          <svg viewBox="0 0 80 80" class="h-full w-full">
+            <path d="M4 2 L2 4 L36 78 L38 76 Z" fill="#cbe9df"/>
+            <path d="M16 2 L14 4 L48 78 L50 76 Z" fill="#cbe9df"/>
+            <path d="M28 2 L26 4 L60 78 L62 76 Z" fill="#cbe9df"/>
+          </svg>
+        </div>
+        <div class="pointer-events-none absolute bottom-10 right-0 hidden h-24 w-24 opacity-20 md:block" aria-hidden="true">
+          <svg viewBox="0 0 80 80" class="h-full w-full">
+            <rect x="10" y="10" width="24" height="24" fill="#34d399"/>
+            <rect x="42" y="10" width="24" height="24" fill="#6ee7b7"/>
+            <rect x="10" y="42" width="24" height="24" fill="#6ee7b7"/>
+          </svg>
+        </div>
+
+        <div class="mx-auto max-w-7xl px-2 py-10 sm:px-4 lg:px-6 lg:py-12">
+          <div class="relative">
+            <div class="hero-slide grid gap-0 overflow-hidden rounded-[28px] border border-white/25 bg-white/10 shadow-soft lg:grid-cols-[1.1fr_0.9fr]" data-slide="0">
+              <div class="bg-gradient-to-br from-emerald-600 to-emerald-700 px-6 py-8 text-white sm:px-8 lg:pl-20 lg:pr-10 lg:py-12">
+                <p class="inline-flex rounded-full border border-white/35 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide">Red de atención ambulatoria</p>
+                <h1 class="mt-4 font-heading text-4xl font-bold leading-[1.03] sm:text-5xl lg:text-[56px]">Atención médica que se adapta a tu vida</h1>
+                <p class="mt-5 max-w-xl text-xl font-semibold leading-tight text-white/95">12 clínicas ambulatorias en EE. UU. y Reino Unido.</p>
+                <p class="mt-4 max-w-2xl text-lg leading-relaxed text-white/90">Citas el mismo día, horarios extendidos y atención bilingüe para que recibas la atención cuando más la necesitas.</p>
+                <a href="application.es.html" class="mt-8 inline-flex min-w-[240px] items-center justify-center rounded-full bg-white px-8 py-3 text-lg font-semibold text-hcNavy transition hover:bg-hcSky focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">Solicitar una cita</a>
+              </div>
+              <div class="relative min-h-[260px] sm:min-h-[340px] lg:min-h-[520px]">
+                <img src="https://images.pexels.com/photos/7089629/pexels-photo-7089629.jpeg?auto=compress&cs=tinysrgb&w=1400" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?auto=format&fit=crop&w=1400&q=80';" alt="Médica explicando un tratamiento a una paciente en una clínica" class="h-full w-full object-cover" loading="eager" />
+                <div class="absolute inset-0 bg-gradient-to-t from-hcNavy/25 to-transparent" aria-hidden="true"></div>
+              </div>
+            </div>
+
+            <div class="hero-slide hidden grid gap-0 overflow-hidden rounded-[28px] border border-white/25 bg-white/10 shadow-soft lg:grid-cols-[1.1fr_0.9fr]" data-slide="1" aria-hidden="true">
+              <div class="bg-gradient-to-br from-emerald-600 to-emerald-700 px-6 py-8 text-white sm:px-8 lg:pl-20 lg:pr-10 lg:py-12">
+                <p class="inline-flex rounded-full border border-white/35 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide">Acceso y continuidad</p>
+                <h2 class="mt-4 font-heading text-4xl font-bold leading-[1.03] sm:text-5xl lg:text-[56px]">Citas el mismo día con horarios extendidos</h2>
+                <p class="mt-5 max-w-xl text-xl font-semibold leading-tight text-white/95">Atención primaria y consultas con especialistas adaptadas a tu agenda.</p>
+                <p class="mt-4 max-w-2xl text-lg leading-relaxed text-white/90">HealthCore ofrece acceso el mismo día y horarios extendidos en su red ambulatoria.</p>
+                <a href="#services" class="mt-8 inline-flex min-w-[240px] items-center justify-center rounded-full bg-white px-8 py-3 text-lg font-semibold text-hcNavy transition hover:bg-hcSky focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">Ver servicios</a>
+              </div>
+              <div class="relative min-h-[260px] sm:min-h-[340px] lg:min-h-[520px]">
+                <img src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=1400&q=80" alt="Profesional de salud preparando un consultorio ambulatorio" class="h-full w-full object-cover" loading="lazy" />
+                <div class="absolute inset-0 bg-gradient-to-t from-hcNavy/25 to-transparent" aria-hidden="true"></div>
+              </div>
+            </div>
+
+            <div class="hero-slide hidden grid gap-0 overflow-hidden rounded-[28px] border border-white/25 bg-white/10 shadow-soft lg:grid-cols-[1.1fr_0.9fr]" data-slide="2" aria-hidden="true">
+              <div class="bg-gradient-to-br from-emerald-600 to-emerald-700 px-6 py-8 text-white sm:px-8 lg:pl-20 lg:pr-10 lg:py-12">
+                <p class="inline-flex rounded-full border border-white/35 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide">Red de confianza</p>
+                <h2 class="mt-4 font-heading text-4xl font-bold leading-[1.03] sm:text-5xl lg:text-[56px]">Equipos bilingües en 12 clínicas</h2>
+                <p class="mt-5 max-w-xl text-xl font-semibold leading-tight text-white/95">Experiencia de atención consistente en EE. UU. y Reino Unido.</p>
+                <p class="mt-4 max-w-2xl text-lg leading-relaxed text-white/90">Personal bilingüe y atención ambulatoria coordinada para pacientes en toda la red de clínicas HealthCore.</p>
+                <a href="#locations" class="mt-8 inline-flex min-w-[240px] items-center justify-center rounded-full bg-white px-8 py-3 text-lg font-semibold text-hcNavy transition hover:bg-hcSky focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">Ver ubicaciones</a>
+              </div>
+              <div class="relative min-h-[260px] sm:min-h-[340px] lg:min-h-[520px]">
+                <img src="https://images.unsplash.com/photo-1666214280391-8ff5bd3c0bf0?auto=format&fit=crop&w=1400&q=80" alt="Paciente recibiendo acompañamiento de un equipo médico bilingüe" class="h-full w-full object-cover" loading="lazy" />
+                <div class="absolute inset-0 bg-gradient-to-t from-hcNavy/25 to-transparent" aria-hidden="true"></div>
+              </div>
+            </div>
+
+            <button type="button" data-carousel-prev class="absolute left-4 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/90 p-3 text-hcNavy shadow-soft transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcNavy lg:left-6" aria-label="Slide anterior">
+              <svg viewBox="0 0 20 20" class="h-5 w-5" fill="currentColor" aria-hidden="true"><path d="M12.8 3.8a1 1 0 0 1 0 1.4L8 10l4.8 4.8a1 1 0 1 1-1.4 1.4l-5.5-5.5a1 1 0 0 1 0-1.4l5.5-5.5a1 1 0 0 1 1.4 0Z"/></svg>
+            </button>
+            <button type="button" data-carousel-next class="absolute right-3 top-1/2 z-10 hidden -translate-y-1/2 rounded-full bg-white/90 p-3 text-hcNavy shadow-soft transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hcNavy sm:flex" aria-label="Slide siguiente">
+              <svg viewBox="0 0 20 20" class="h-5 w-5" fill="currentColor" aria-hidden="true"><path d="M7.2 16.2a1 1 0 0 1 0-1.4L12 10 7.2 5.2a1 1 0 0 1 1.4-1.4l5.5 5.5a1 1 0 0 1 0 1.4l-5.5 5.5a1 1 0 0 1-1.4 0Z"/></svg>
+            </button>
           </div>
-          <div class="rounded-3xl border border-hcNavy/15 bg-white p-6 shadow-soft">
-            <h2 class="font-heading text-2xl font-semibold">Por qué HealthCore</h2>
-            <ul class="mt-4 space-y-3 text-hcSlate">
-              <li class="rounded-xl bg-hcSand px-4 py-3">Citas el mismo día</li>
-              <li class="rounded-xl bg-hcSand px-4 py-3">Horarios extendidos</li>
-              <li class="rounded-xl bg-hcSand px-4 py-3">Personal bilingüe</li>
-              <li class="rounded-xl bg-hcSand px-4 py-3">12 clínicas</li>
-            </ul>
+
+          <div class="mt-4 flex items-center justify-center gap-2" aria-label="Paginación del carrusel">
+            <button type="button" data-carousel-dot="0" class="h-3 w-3 rounded-full bg-hcNavy" aria-label="Ir al slide 1" aria-current="true"></button>
+            <button type="button" data-carousel-dot="1" class="h-3 w-3 rounded-full bg-white/55" aria-label="Ir al slide 2"></button>
+            <button type="button" data-carousel-dot="2" class="h-3 w-3 rounded-full bg-white/55" aria-label="Ir al slide 3"></button>
           </div>
-        </article>
+          <p id="carousel-status-es" class="sr-only" aria-live="polite"></p>
+        </div>
       </section>
 
-      <section id="services" class="bg-white/80 border-y border-hcNavy/10">
-        <div class="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+      <section id="services" class="border-y border-hcNavy/10 bg-white">
+        <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:py-12">
           <h2 class="font-heading text-3xl font-bold">Servicios</h2>
-          <div class="mt-8 grid gap-5 md:grid-cols-3">
+          <div class="mt-8 grid gap-6 md:grid-cols-3">
             <article class="rounded-2xl border border-hcNavy/10 bg-white p-6 shadow-soft">
               <h3 class="font-heading text-xl font-semibold">Atención Primaria y Enfermedades Crónicas</h3>
-              <p class="mt-3 text-hcSlate">Primary Care y Chronic Disease Management.</p>
+              <ul class="mt-3 space-y-2 text-hcSlate">
+                <li>Citas el mismo día con médicos de atención primaria</li>
+                <li>Manejo continuo de diabetes, hipertensión y asma</li>
+              </ul>
             </article>
             <article class="rounded-2xl border border-hcNavy/10 bg-white p-6 shadow-soft">
               <h3 class="font-heading text-xl font-semibold">Consultas con Especialistas</h3>
-              <p class="mt-3 text-hcSlate">Specialist Consultation en clínicas ambulatorias.</p>
+              <ul class="mt-3 space-y-2 text-hcSlate">
+                <li>Cardiología, endocrinología, neumología y salud de la mujer</li>
+                <li>Derivaciones coordinadas dentro de la red de HealthCore</li>
+              </ul>
             </article>
             <article class="rounded-2xl border border-hcNavy/10 bg-white p-6 shadow-soft">
               <h3 class="font-heading text-xl font-semibold">Salud Preventiva y Bienestar</h3>
-              <p class="mt-3 text-hcSlate">Programas de Preventive Health and Wellness.</p>
+              <ul class="mt-3 space-y-2 text-hcSlate">
+                <li>Chequeos, vacunación y revisiones anuales</li>
+                <li>Asesoramiento en salud mental y derivaciones a psiquiatría</li>
+              </ul>
             </article>
           </div>
         </div>
       </section>
 
-      <section id="locations" class="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-        <h2 class="font-heading text-3xl font-bold">Ubicaciones en EE. UU.</h2>
-        <div class="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          <article class="rounded-2xl border border-hcNavy/10 bg-white p-5 shadow-soft"><h3 class="font-heading text-lg font-semibold">HealthCore Austin Central</h3><p class="mt-2 text-sm text-hcSlate">Austin, Texas</p><p class="mt-1 text-sm text-hcSlate">Teléfono: +1 512 555 0101</p><p class="mt-1 text-sm text-hcSlate">Horario: Lun-Sáb, 7:00am-8:00pm</p></article>
-          <article class="rounded-2xl border border-hcNavy/10 bg-white p-5 shadow-soft"><h3 class="font-heading text-lg font-semibold">HealthCore Austin North</h3><p class="mt-2 text-sm text-hcSlate">Austin, Texas</p><p class="mt-1 text-sm text-hcSlate">Teléfono: +1 512 555 0102</p><p class="mt-1 text-sm text-hcSlate">Horario: Lun-Sáb, 7:00am-7:00pm</p></article>
-          <article class="rounded-2xl border border-hcNavy/10 bg-white p-5 shadow-soft"><h3 class="font-heading text-lg font-semibold">HealthCore San Antonio</h3><p class="mt-2 text-sm text-hcSlate">San Antonio, Texas</p><p class="mt-1 text-sm text-hcSlate">Teléfono: +1 210 555 0103</p><p class="mt-1 text-sm text-hcSlate">Horario: Lun-Sáb, 7:00am-6:00pm</p></article>
-          <article class="rounded-2xl border border-hcNavy/10 bg-white p-5 shadow-soft"><h3 class="font-heading text-lg font-semibold">HealthCore Miami</h3><p class="mt-2 text-sm text-hcSlate">Miami, Florida</p><p class="mt-1 text-sm text-hcSlate">Teléfono: +1 305 555 0104</p><p class="mt-1 text-sm text-hcSlate">Horario: Lun-Sáb, 7:00am-8:00pm</p></article>
-          <article class="rounded-2xl border border-hcNavy/10 bg-white p-5 shadow-soft"><h3 class="font-heading text-lg font-semibold">HealthCore Orlando</h3><p class="mt-2 text-sm text-hcSlate">Orlando, Florida</p><p class="mt-1 text-sm text-hcSlate">Teléfono: +1 407 555 0105</p><p class="mt-1 text-sm text-hcSlate">Horario: Lun-Sáb, 7:00am-6:00pm</p></article>
-          <article class="rounded-2xl border border-hcNavy/10 bg-white p-5 shadow-soft"><h3 class="font-heading text-lg font-semibold">HealthCore Atlanta</h3><p class="mt-2 text-sm text-hcSlate">Atlanta, Georgia</p><p class="mt-1 text-sm text-hcSlate">Teléfono: +1 404 555 0106</p><p class="mt-1 text-sm text-hcSlate">Horario: Lun-Sáb, 7:00am-7:00pm</p></article>
+      <section class="bg-hcSky border-b border-hcNavy/10">
+        <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:py-12">
+          <h2 class="font-heading text-3xl font-bold">Por qué HealthCore</h2>
+          <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <article class="rounded-xl border border-hcTeal/20 bg-white p-5"><p class="text-2xl font-bold text-hcTeal">01</p><h3 class="mt-2 font-semibold">Citas el mismo día</h3></article>
+            <article class="rounded-xl border border-hcTeal/20 bg-white p-5"><p class="text-2xl font-bold text-hcTeal">02</p><h3 class="mt-2 font-semibold">Horarios extendidos</h3></article>
+            <article class="rounded-xl border border-hcTeal/20 bg-white p-5"><p class="text-2xl font-bold text-hcTeal">03</p><h3 class="mt-2 font-semibold">Personal bilingüe</h3></article>
+            <article class="rounded-xl border border-hcTeal/20 bg-white p-5"><p class="text-2xl font-bold text-hcTeal">04</p><h3 class="mt-2 font-semibold">12 clínicas</h3></article>
+          </div>
         </div>
       </section>
 
-      <section id="contact" class="border-t border-hcNavy/10 bg-hcNavy text-white">
-        <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+      <section id="locations" class="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:py-12">
+        <h2 class="font-heading text-3xl font-bold">Ubicaciones en EE. UU.</h2>
+        <div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <article class="rounded-2xl border border-hcNavy/10 bg-white p-6 shadow-soft"><h3 class="font-heading text-lg font-semibold">HealthCore Austin Central</h3><p class="mt-3 text-sm text-hcSlate">(512) 340-8800</p><p class="mt-1 text-sm text-hcSlate">Lun–Vie 7am–8pm · Sáb 9am–3pm</p></article>
+          <article class="rounded-2xl border border-hcNavy/10 bg-white p-6 shadow-soft"><h3 class="font-heading text-lg font-semibold">HealthCore Austin North</h3><p class="mt-3 text-sm text-hcSlate">(512) 340-8810</p><p class="mt-1 text-sm text-hcSlate">Lun–Vie 8am–7pm</p></article>
+          <article class="rounded-2xl border border-hcNavy/10 bg-white p-6 shadow-soft"><h3 class="font-heading text-lg font-semibold">HealthCore San Antonio</h3><p class="mt-3 text-sm text-hcSlate">(210) 720-4400</p><p class="mt-1 text-sm text-hcSlate">Lun–Vie 8am–6pm · Sáb 9am–1pm</p></article>
+          <article class="rounded-2xl border border-hcNavy/10 bg-white p-6 shadow-soft"><h3 class="font-heading text-lg font-semibold">HealthCore Miami</h3><p class="mt-3 text-sm text-hcSlate">(305) 510-7700</p><p class="mt-1 text-sm text-hcSlate">Lun–Vie 7am–8pm · Sáb 9am–4pm</p></article>
+          <article class="rounded-2xl border border-hcNavy/10 bg-white p-6 shadow-soft"><h3 class="font-heading text-lg font-semibold">HealthCore Orlando</h3><p class="mt-3 text-sm text-hcSlate">(407) 892-6600</p><p class="mt-1 text-sm text-hcSlate">Lun–Vie 8am–6pm</p></article>
+          <article class="rounded-2xl border border-hcNavy/10 bg-white p-6 shadow-soft"><h3 class="font-heading text-lg font-semibold">HealthCore Atlanta</h3><p class="mt-3 text-sm text-hcSlate">(404) 330-9900</p><p class="mt-1 text-sm text-hcSlate">Lun–Vie 8am–7pm</p></article>
+        </div>
+      </section>
+
+      <section id="contact" class="border-t border-hcNavy/10 bg-white">
+        <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:py-12">
           <h2 class="font-heading text-3xl font-bold">Contacto</h2>
-          <p class="mt-4 max-w-2xl text-white/90">¿Necesitas apoyo de atención o tienes una consulta sobre servicios? Envía una solicitud de consulta y recepción se comunicará contigo para coordinar los próximos pasos.</p>
-          <p class="mt-3 text-white/90">Alianzas: <a class="underline" href="mailto:partnerships@healthcore.com">partnerships@healthcore.com</a></p>
+          <div class="mt-6 grid gap-4 md:grid-cols-2">
+            <article class="rounded-2xl border border-hcNavy/10 bg-hcSky p-6">
+              <h3 class="font-heading text-xl font-semibold">Soporte para solicitud de consulta</h3>
+              <p class="mt-3 text-hcSlate">¿Necesitas apoyo de atención o tienes una consulta sobre servicios? Envía una solicitud de consulta y recepción se comunicará contigo para coordinar los próximos pasos.</p>
+              <a href="application.es.html" class="mt-5 inline-flex rounded-full bg-hcCoral px-5 py-2.5 font-semibold text-white hover:bg-[#161a35] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-hcTeal">Ir al formulario</a>
+            </article>
+            <article class="rounded-2xl border border-hcNavy/10 bg-white p-6">
+              <h3 class="font-heading text-xl font-semibold">Alianzas</h3>
+              <p class="mt-3 text-hcSlate">Alianzas: <a class="font-semibold text-hcTeal underline" href="mailto:partnerships@healthcore.com">partnerships@healthcore.com</a></p>
+            </article>
+          </div>
         </div>
       </section>
     </main>
 
-    <footer class="bg-[#061225] text-white">
+    <footer class="bg-hcCoral text-white">
       <div class="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-6 text-sm sm:flex-row sm:items-center sm:justify-between sm:px-6">
         <p>© 2025 HealthCore. Todos los derechos reservados.</p>
         <ul class="flex gap-4">
@@ -209,6 +303,84 @@
           mobileMenu.classList.toggle("hidden");
         });
       }
+
+      (function initHeroCarousel() {
+        const carousel = document.querySelector("[data-hero-carousel]");
+        if (!carousel) return;
+
+        const slides = Array.from(carousel.querySelectorAll(".hero-slide"));
+        const dots = Array.from(carousel.querySelectorAll("[data-carousel-dot]"));
+        const prevButton = carousel.querySelector("[data-carousel-prev]");
+        const nextButton = carousel.querySelector("[data-carousel-next]");
+        const status = document.getElementById("carousel-status-es");
+        const total = slides.length;
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        let currentIndex = 0;
+        let timerId = null;
+
+        function updateSlides(nextIndex) {
+          currentIndex = (nextIndex + total) % total;
+          slides.forEach((slide, index) => {
+            const isActive = index === currentIndex;
+            slide.classList.toggle("hidden", !isActive);
+            slide.setAttribute("aria-hidden", String(!isActive));
+          });
+
+          dots.forEach((dot, index) => {
+            const isActive = index === currentIndex;
+            dot.classList.toggle("bg-hcNavy", isActive);
+            dot.classList.toggle("bg-white/55", !isActive);
+            dot.setAttribute("aria-current", isActive ? "true" : "false");
+          });
+
+          if (status) {
+            status.textContent = "Mostrando slide " + (currentIndex + 1) + " de " + total;
+          }
+        }
+
+        function startAutoplay() {
+          if (reducedMotion || timerId) return;
+          timerId = window.setInterval(() => {
+            updateSlides(currentIndex + 1);
+          }, 6000);
+        }
+
+        function stopAutoplay() {
+          if (!timerId) return;
+          window.clearInterval(timerId);
+          timerId = null;
+        }
+
+        if (prevButton) {
+          prevButton.addEventListener("click", () => {
+            updateSlides(currentIndex - 1);
+          });
+        }
+
+        if (nextButton) {
+          nextButton.addEventListener("click", () => {
+            updateSlides(currentIndex + 1);
+          });
+        }
+
+        dots.forEach((dot, index) => {
+          dot.addEventListener("click", () => {
+            updateSlides(index);
+          });
+        });
+
+        carousel.addEventListener("mouseenter", stopAutoplay);
+        carousel.addEventListener("mouseleave", startAutoplay);
+        carousel.addEventListener("focusin", stopAutoplay);
+        carousel.addEventListener("focusout", (event) => {
+          if (!carousel.contains(event.relatedTarget)) {
+            startAutoplay();
+          }
+        });
+
+        updateSlides(0);
+        startAutoplay();
+      })();
     </script>
   </body>
 </html>

@@ -12,6 +12,22 @@ Implementar el primer punto de contacto digital de HealthCore con una landing pu
 - Accesibilidad base requerida para evaluacion.
 - SEO tecnico con Schema.org en JSON-LD.
 
+## Refinamiento visual
+Se refino la identidad visual hacia una estetica sanitaria institucional, manteniendo intacto el alcance funcional del hito.
+
+Cambios visuales aplicados:
+- Paleta sanitaria con verde protagonista, azul marino de contraste, acentos brillantes y neutros claros.
+- Mayor aire visual entre secciones, cards y bloques de formulario.
+- Hero evolucionado a carrusel visual (3 slides) con imagenes clinicas, flechas laterales y dots de paginacion centrados.
+- Header, hero, servicios, beneficios, ubicaciones y contacto con jerarquia mas clara.
+- Wizard de 4 pasos con indicador de progreso integrado a la nueva paleta.
+
+Sin cambios en:
+- contenido del contexto
+- campos y atributos `name`
+- reglas de validacion
+- logica funcional del wizard
+
 ## Estructura
 - `index.html`
 - `index.es.html`
@@ -23,7 +39,7 @@ Implementar el primer punto de contacto digital de HealthCore con una landing pu
 ## Landing
 La landing incluye:
 - Header con marca HealthCore, navegacion y selector EN | ES.
-- Hero con CTA al formulario.
+- Hero carrusel con CTA al formulario, 3 slides y navegacion por flechas + dots.
 - Seccion de servicios (3 grupos requeridos).
 - Seccion Por que HealthCore con beneficios clave.
 - Seccion de ubicaciones de EE. UU. (6 clinicas).
