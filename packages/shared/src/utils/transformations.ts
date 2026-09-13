@@ -3,7 +3,24 @@
  * No validation logic here yet. All functions are read-only; inputs are never mutated.
  */
 
-import type { Appointment, BillingClaim } from "../types/models";
+import type { Appointment, AppointmentStatus, BillingClaim } from "../types/models";
+
+export function countAppointmentsByStatus(
+  appointments: readonly Appointment[]
+): Record<AppointmentStatus, number> {
+  const counts: Record<AppointmentStatus, number> = {
+    scheduled: 0,
+    completed: 0,
+    cancelled: 0,
+    no_show: 0,
+  };
+
+  for (const appointment of appointments) {
+    counts[appointment.status] += 1;
+  }
+
+  return counts;
+}
 
 export function calculateNoShowRate(appointments: readonly Appointment[]): number {
   if (appointments.length === 0) return 0;

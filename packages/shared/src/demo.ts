@@ -18,6 +18,7 @@ import {
   calculateAverageClaimAmount,
   calculateClaimRejectionRate,
   calculateNoShowRate,
+  countAppointmentsByStatus,
   generateExecutiveReport,
   getMinMaxClaimAmount,
   sumRevenueByClinic,
@@ -238,6 +239,7 @@ console.log("Search", {
 });
 
 console.log("Transformations", {
+  appointmentsByStatus: countAppointmentsByStatus(appointments),
   noShowRate: calculateNoShowRate(appointments),
   claimRejectionRate: calculateClaimRejectionRate(claims),
   revenueByClinic: sumRevenueByClinic(claims),
@@ -252,6 +254,7 @@ console.log("Validations", {
 });
 
 console.log("Empty arrays", {
+  appointmentsByStatus: countAppointmentsByStatus([]),
   noShowRate: calculateNoShowRate([]),
   minMaxClaimAmount: getMinMaxClaimAmount([]),
   linearSearch: searchPatientByEmailOrPhone([], "unknown@example.com"),
