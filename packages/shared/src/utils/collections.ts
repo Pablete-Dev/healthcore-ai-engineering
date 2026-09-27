@@ -24,6 +24,23 @@ export function filterAppointmentsByClinic(
   return appointments.filter((appointment) => appointment.clinicId === clinicId);
 }
 
+export function filterAppointments(
+  appointments: readonly Appointment[],
+  criteria: {
+    clinicId?: string;
+    status?: Appointment["status"];
+    minNoShowRisk?: number;
+  } = {}
+): Appointment[] {
+  return appointments.filter(
+    (appointment) =>
+      (criteria.clinicId === undefined || appointment.clinicId === criteria.clinicId) &&
+      (criteria.status === undefined || appointment.status === criteria.status) &&
+      (criteria.minNoShowRisk === undefined ||
+        (appointment.noShowRiskScore ?? 0) >= criteria.minNoShowRisk)
+  );
+}
+
 export function filterHighNoShowRiskAppointments(
   appointments: readonly Appointment[],
   threshold = 0.7
@@ -74,10 +91,19 @@ export function sortAppointmentsByNoShowRiskDesc(
   );
 }
 
+export function sortClaimsByAmount(
+  claims: readonly BillingClaim[],
+  direction: "asc" | "desc" = "desc"
+): BillingClaim[] {
+  return [...claims].sort((a, b) =>
+    direction === "asc" ? a.amount - b.amount : b.amount - a.amount
+  );
+}
+
 export function sortClaimsByAmountDesc(
   claims: readonly BillingClaim[]
 ): BillingClaim[] {
-  return [...claims].sort((a, b) => b.amount - a.amount);
+  return sortClaimsByAmount(claims, "desc");
 }
 
 // Staff without a licenseExpiryDate are sorted last (treated as farthest from expiring).

@@ -1,10 +1,12 @@
 import {
+  filterAppointments,
   filterAppointmentsByClinic,
   filterHighNoShowRiskAppointments,
   filterRejectedClaims,
   filterStaffWithUpcomingCmeExpiry,
   sortAppointmentsByDateTime,
   sortAppointmentsByNoShowRiskDesc,
+  sortClaimsByAmount,
   sortClaimsByAmountDesc,
   sortStaffByCmeExpiryAsc,
 } from "./utils/collections";
@@ -221,6 +223,13 @@ const invalidRequest: ConsultationRequest = {
 };
 
 console.log("Collections", {
+  appointmentsByOneCriterion: filterAppointments(appointments, { clinicId: "CLINIC-AUS" }),
+  appointmentsByMultipleCriteria: filterAppointments(appointments, {
+    clinicId: "CLINIC-AUS",
+    status: "completed",
+    minNoShowRisk: 0.4,
+  }),
+  appointmentsWithoutCriteria: filterAppointments(appointments),
   appointmentsAtAustin: filterAppointmentsByClinic(appointments, "CLINIC-AUS"),
   highNoShowRisk: filterHighNoShowRiskAppointments(appointments),
   rejectedClaims: filterRejectedClaims(claims),
@@ -228,14 +237,18 @@ console.log("Collections", {
   appointmentsByDateTime: sortAppointmentsByDateTime(appointments),
   appointmentsByNoShowRisk: sortAppointmentsByNoShowRiskDesc(appointments),
   claimsByAmount: sortClaimsByAmountDesc(claims),
+  claimsByAmountAsc: sortClaimsByAmount(claims, "asc"),
+  claimsByAmountDesc: sortClaimsByAmount(claims, "desc"),
   staffByCmeExpiry: sortStaffByCmeExpiryAsc(staff),
 });
 
 console.log("Search", {
   linearFound: searchPatientByEmailOrPhone(patients, "ana.martinez@example.com"),
-  linearNotFound: searchClaimsByPatientId(claims, "PAT-999"),
-  binaryFound: binarySearchPatientById(patients, "PAT-002"),
-  binaryNotFound: binarySearchAppointmentById(appointments, "APT-999"),
+  linearNotFound: searchPatientByEmailOrPhone(patients, "unknown@example.com"),
+  claimsByPatientId: searchClaimsByPatientId(claims, "PAT-999"),
+  binaryFoundIndex: binarySearchPatientById(patients, "PAT-002"),
+  binaryNotFoundIndex: binarySearchAppointmentById(appointments, "APT-999"),
+  binaryEmptyIndex: binarySearchPatientById([], "PAT-001"),
 });
 
 console.log("Transformations", {
@@ -254,6 +267,7 @@ console.log("Validations", {
 });
 
 console.log("Empty arrays", {
+  filteredAppointments: filterAppointments([], { status: "scheduled" }),
   appointmentsByStatus: countAppointmentsByStatus([]),
   noShowRate: calculateNoShowRate([]),
   minMaxClaimAmount: getMinMaxClaimAmount([]),

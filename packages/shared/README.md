@@ -18,12 +18,14 @@ src/
 
 ## Implemented Utilities
 
-- Collections: appointment, claim, and clinical staff filters and sorting.
-- Search: patient and claim linear lookups plus binary searches by identifier.
-- Transformations: no-show and claim rejection rates, appointment counts by status, paid revenue by clinic, claim minimum/maximum and average amounts, and executive reports.
+- Collections: filter appointments by any combination of `clinicId`, `status`, and `minNoShowRisk` (or no criteria); filter claims and clinical staff; sort claims by amount with `"asc"` or `"desc"`. Filters and sorts return new arrays without mutating inputs.
+- Search: linear patient lookup by email or phone and claim lookup by patient ID. Binary patient and appointment searches require IDs sorted ascending and return the found index or `-1` when missing, including empty arrays.
+- Transformations: appointment counts by status, no-show and claim rejection rates, paid revenue by clinic, claim minimum/maximum and average amounts, and a HealthCore executive report with appointment volume, no-show rate, claim rejection rate, and `revenueByClinic`.
 - Validations: required fields, contact and insurance rules, patient identifiers, health concern length, consent, and appointment date constraints.
 
 ## Run
+
+From `packages/shared`, install dependencies, typecheck, and run the demo:
 
 ```bash
 npm install
@@ -33,4 +35,4 @@ npm run demo
 
 ## HealthCore Cases
 
-The demo covers appointments at multiple clinics, high no-show risk, cancelled/completed/scheduled/no-show appointment status totals, rejected and paid billing claims, staff credential expiry, patient searches, consultation request validation, and empty data sets.
+The demo covers single- and multiple-criterion filters, ascending and descending sorting, found and missing linear searches, binary indices and `-1` results, all existing aggregations, the executive report with revenue by clinic, valid and invalid consultation requests, and empty data sets.

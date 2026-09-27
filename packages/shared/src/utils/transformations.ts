@@ -70,6 +70,7 @@ export interface ExecutiveReport {
   appointmentVolume: number;
   noShowRate: number;
   claimRejectionRate: number;
+  revenueByClinic: Record<string, number>;
 }
 
 export function generateExecutiveReport(
@@ -80,5 +81,6 @@ export function generateExecutiveReport(
     appointmentVolume: appointments.length,
     noShowRate: calculateNoShowRate(appointments),
     claimRejectionRate: calculateClaimRejectionRate(claims),
+    revenueByClinic: sumRevenueByClinic(claims),
   };
 }

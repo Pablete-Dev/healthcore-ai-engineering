@@ -11,9 +11,10 @@ export function searchPatientByEmailOrPhone(
   query: string
 ): Patient | undefined {
   if (patients.length === 0) return undefined;
-  return patients.find(
-    (patient) => patient.email === query || patient.phone === query
-  );
+  for (const patient of patients) {
+    if (patient.email === query || patient.phone === query) return patient;
+  }
+  return undefined;
 }
 
 // BillingClaim has no billing-code field in models.ts, so a linear search by
@@ -30,7 +31,7 @@ export function searchClaimsByPatientId(
 export function binarySearchPatientById(
   patients: readonly Patient[],
   id: string
-): Patient | undefined {
+): number {
   let low = 0;
   let high = patients.length - 1;
 
@@ -38,7 +39,7 @@ export function binarySearchPatientById(
     const mid = Math.floor((low + high) / 2);
     const candidate = patients[mid];
 
-    if (candidate.id === id) return candidate;
+    if (candidate.id === id) return mid;
     if (candidate.id < id) {
       low = mid + 1;
     } else {
@@ -46,14 +47,14 @@ export function binarySearchPatientById(
     }
   }
 
-  return undefined;
+  return -1;
 }
 
 // Assumes `appointments` is already sorted ascending by `id`.
 export function binarySearchAppointmentById(
   appointments: readonly Appointment[],
   id: string
-): Appointment | undefined {
+): number {
   let low = 0;
   let high = appointments.length - 1;
 
@@ -61,7 +62,7 @@ export function binarySearchAppointmentById(
     const mid = Math.floor((low + high) / 2);
     const candidate = appointments[mid];
 
-    if (candidate.id === id) return candidate;
+    if (candidate.id === id) return mid;
     if (candidate.id < id) {
       low = mid + 1;
     } else {
@@ -69,5 +70,5 @@ export function binarySearchAppointmentById(
     }
   }
 
-  return undefined;
+  return -1;
 }
