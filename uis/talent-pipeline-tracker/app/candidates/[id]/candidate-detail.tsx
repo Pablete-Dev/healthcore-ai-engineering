@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { createCandidateNote, deleteCandidateNote, getCandidate, getCandidateNotes, patchCandidate } from "@/lib/api";
+import { createCandidateNote, deleteCandidateNote, getCandidate, getCandidateNotes, patchCandidate, updateCandidate } from "@/lib/api";
 import type { Candidate, CandidateNote, CandidateStage, CandidateStatus, PatchCandidatePayload } from "@/types/candidate";
 import { stageLabels, statusLabels } from "@/app/candidate-labels";
+import CandidateForm from "@/app/components/candidate-form";
 
 type CandidateResult = { id: string; data: Candidate | null; error: string | null };
 type NotesResult = { id: string; data: CandidateNote[]; error: string | null };
@@ -14,9 +15,11 @@ function errorMessage(error: unknown): string {
   return error instanceof Error ? error.message : "Inténtalo de nuevo.";
 }
 
-export default function CandidateDetail({ id }: { id: string }) {
+export default function CandidateDetail({ id, created = false }: { id: string; created?: boolean }) {
   const [candidateResult, setCandidateResult] = useState<CandidateResult | null>(null);
   const [notesResult, setNotesResult] = useState<NotesResult | null>(null);
+  const [editing, setEditing] = useState(false);
+  const [editFeedback, setEditFeedback] = useState<string | null>(null);
   const [updating, setUpdating] = useState(false);
   const [updateFeedback, setUpdateFeedback] = useState<Feedback | null>(null);
   const [content, setContent] = useState("");
@@ -114,6 +117,7 @@ export default function CandidateDetail({ id }: { id: string }) {
       </header>
       <main className="workspace">
         <Link className="back-link" href="/">← Volver a candidaturas</Link>
+        {created && <p className="feedback feedback-success" role="status">Candidatura creada correctamente.</p>}
         {candidateResult?.id !== id ? (
           <div className="notice" role="status">Cargando candidatura...</div>
         ) : candidateResult.error ? (
@@ -126,8 +130,24 @@ export default function CandidateDetail({ id }: { id: string }) {
               <p className="subtitle">{candidate.position}</p>
             </div>
             <section className="detail-section" aria-labelledby="candidate-info-title">
-              <h2 id="candidate-info-title">Datos de la candidatura</h2>
-              <dl className="detail-grid">
+              <div className="section-heading">
+                <h2 id="candidate-info-title">Datos de la candidatura</h2>
+                {!editing && <button type="button" className="text-button" onClick={() => { setEditFeedback(null); setEditing(true); }}>Editar datos</button>}
+              </div>
+              {editFeedback && <p className="feedback feedback-success" role="status">{editFeedback}</p>}
+              {editing ? (
+                <CandidateForm
+                  key={candidate.id}
+                  initial={candidate}
+                  onSave={(payload) => updateCandidate(id, payload)}
+                  onSuccess={(updated) => {
+                    setCandidateResult({ id, data: updated, error: null });
+                    setEditFeedback("Candidatura actualizada correctamente.");
+                    setEditing(false);
+                  }}
+                  onCancel={() => setEditing(false)}
+                />
+              ) : <dl className="detail-grid">
                 <div><dt>Nombre completo</dt><dd>{candidate.full_name}</dd></div>
                 <div><dt>Puesto</dt><dd>{candidate.position}</dd></div>
                 <div><dt>Email</dt><dd><a href={`mailto:${candidate.email}`}>{candidate.email}</a></dd></div>
@@ -136,7 +156,7 @@ export default function CandidateDetail({ id }: { id: string }) {
                 <div><dt>Fecha de solicitud</dt><dd>{new Date(candidate.applied_at).toLocaleDateString("es-ES")}</dd></div>
                 <div><dt>LinkedIn</dt><dd>{candidate.linkedin_url ? <a href={candidate.linkedin_url} target="_blank" rel="noopener noreferrer">Ver perfil</a> : "No disponible"}</dd></div>
                 <div><dt>Currículum</dt><dd>{candidate.cv_url ? <a href={candidate.cv_url} target="_blank" rel="noopener noreferrer">Ver CV</a> : "No disponible"}</dd></div>
-              </dl>
+              </dl>}
             </section>
             <section className="detail-section" aria-labelledby="candidate-process-title">
               <h2 id="candidate-process-title">Proceso de selección</h2>

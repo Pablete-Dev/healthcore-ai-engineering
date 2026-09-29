@@ -1,6 +1,7 @@
 import CandidateDetail from "./candidate-detail";
 
-export default async function CandidatePage({ params }: { params: Promise<{ id: string }> }) {
+export default async function CandidatePage({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ created?: string }> }) {
   const { id } = await params;
-  return <CandidateDetail id={id} />;
+  const { created } = await searchParams;
+  return <CandidateDetail id={id} created={created === "1"} />;
 }

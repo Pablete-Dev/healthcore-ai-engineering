@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { getCandidates } from "@/lib/api";
 import type { Candidate, CandidateStage, CandidateStatus } from "@/types/candidate";
@@ -69,7 +70,10 @@ export default function CandidateDashboard() {
       <main className="workspace">
         <div className="page-intro">
           <p className="breadcrumb">Personas y Fuerza Laboral / Selección</p>
-          <h1>Candidaturas</h1>
+          <div className="intro-actions">
+            <h1>Candidaturas</h1>
+            <Link className="primary-link" href="/candidates/new">Nueva candidatura</Link>
+          </div>
           <p className="subtitle">Talent Pipeline Tracker</p>
         </div>
         <section className="filters-section" aria-label="Buscar y filtrar candidaturas">
